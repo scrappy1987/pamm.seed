@@ -1,27 +1,28 @@
-<div class="panel panel-default" data-ng-controller="projectFormController">
-  <div class="panel-heading">Sample - Add New Project</div>
-  <form class="panel-body container" name="projectForm"
-        data-ng-submit="saveProject(projectForm)" method="post" novalidate="novalidate">
-    <div class="row">
-      <div class='form-group'>
-        <label for="title">Title :</label>
-        <input type="text" class="form-control" data-ng-model="project.title" placeholder="Project Title" id="title"
-               required>
-      </div>
-      <div class='form-group'>
-        <label for="summary">Summary :</label>
-          <textarea class="form-control" rows="3" data-ng-model="project.summary" placeholder="Project Summary"
+<div class="panel panel-default" data-ng-controller="projectFormController as projectFormCtrl">
+    <div class="panel-heading">Sample - Add New Project</div>
+    <form class="panel-body container" name="projectForm"
+          data-ng-submit="projectFormCtrl.saveProject(projectForm)" method="post" novalidate="novalidate">
+        <div class="row">
+            <div class='form-group'>
+                <label for="title">Title :</label>
+                <input type="text" class="form-control" data-ng-model="projectFormCtrl.project.title" placeholder="Project Title"
+                       id="title"
+                       required>
+            </div>
+            <div class='form-group'>
+                <label for="summary">Summary :</label>
+          <textarea class="form-control" rows="3" data-ng-model="projectFormCtrl.project.summary" placeholder="Project Summary"
                     id="summary"></textarea>
-      </div>
-      <div class='form-group'>
-        <label for="info">Additional Information :</label>
-          <textarea class="form-control" rows="2" data-ng-model="project.info" placeholder="Additional Information"
+            </div>
+            <div class='form-group'>
+                <label for="info">Additional Information :</label>
+          <textarea class="form-control" rows="2" data-ng-model="projectFormCtrl.project.info" placeholder="Additional Information"
                     id="info"></textarea>
-      </div>
-    </div>
-    <div class="pull-right">
-      <button type="submit" class="btn btn-primary">Save</button>
-      <button type="submit" data-ng-click="cancel(projectForm)" class="btn btn-cancel">Cancel</button>
-    </div>
-  </form>
+            </div>
+        </div>
+        <div class="pull-right">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" data-ng-click="projectFormCtrl.cancel(projectForm)" class="btn btn-cancel">Cancel</button>
+        </div>
+    </form>
 </div>

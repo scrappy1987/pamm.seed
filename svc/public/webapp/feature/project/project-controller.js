@@ -1,21 +1,25 @@
 "use strict";
 
-/**
- * project Controller - this manages the default Reauirements pages that shows all the projects
- */
-angular.module('app').controller("projectController", ["$scope", "$log", "repository", function ($scope, $log, repository) {
+(function () {
+    /**
+     * project Controller - this manages the default Reauirements pages that shows all the projects
+     */
+    angular.module('app')
+        .controller("projectController",
+        ["$log", "repository", ProjectCtrl]);
 
-    // Constant - for trace and debug
-    $scope.controllerName = "projectController";
+    function ProjectCtrl($log, repository) {
+        var vm = this;
+        // Constant - for trace and debug
+        vm.controllerName = "projectController";
 
-    // init get all user projects
-    repository.getProject().then(function (results) {
-
-        $log.debug("Retrieving projects from repository");
-        $scope.projects = results;
-    }, function (error) {
-        $scope.error = true;
-        $scope.errorMessage = error;
-    });
-}]);
-
+        // init get all user projects
+        repository.getProject().then(function (results) {
+            $log.debug("Retrieving projects from repository");
+            vm.projects = results;
+        }, function (error) {
+            vm.error = true;
+            vm.errorMessage = error;
+        });
+    }
+}());

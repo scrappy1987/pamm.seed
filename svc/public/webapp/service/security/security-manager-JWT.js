@@ -1,13 +1,17 @@
-angular.module("securityManager")
-    .decorator("securityManager", function ($delegate) {
+"use strict";
+(function () {
+
+    angular.module("securityManager")
+        .decorator("securityManager",
+        [SecurityManager]);
+
+    function SecurityManager($delegate) {
 
         var login = $delegate.login;
-
-        $delegate.login = function (username, password) {
-            console.log("Extended");
-            return login(username, password);
+        $delegate.login = function (credentials) {
+            return login(credentials);
         };
 
         return $delegate;
-
-    });
+    }
+}());

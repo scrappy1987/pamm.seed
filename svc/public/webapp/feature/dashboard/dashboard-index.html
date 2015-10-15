@@ -1,27 +1,30 @@
-<div class="dashboard panel panel-default" data-ng-controller="dashboardController">
-  <div class="panel-heading">Start Page - Introduction</div>
-  <div class="panel-body">
-    <p> Click on the sample tab to see a sample list implementation. On the "Manage Project" page - you will a list of
-      sample data. This list of data comes from the repository and the (mock) DAL service. See service/repository and
-      service/dal.
-    </p>
+<div class="dashboard panel panel-default" data-ng-controller="dashboardController as dashboardCtrl">
+    <div class="panel-heading">Start Page - Introduction</div>
+    <div class="panel-body">
+        <p> Click on the sample tab to see a sample list implementation. On the "Manage Project" page - you will a list
+            of
+            sample data. This list of data comes from the repository and the (mock) DAL service. See service/repository
+            and
+            service/dal.
+        </p>
+        <p>
+            The DAL service is where you implement connection to the back end. Currently, there is a mock implementation
+            for
+            demonstration purpose. (Note: it is not good practice to put mocks alongside real code. Future releases of
+            this seed, we will use external configuration to switch.
+        </p>
 
-    <p>
-      The DAL service is where you implement connection to the back end. Currently, there is a mock implementation for
-      demonstration purpose. (Note: it is not good practice to put mocks alongside real code. Future releases of
-      this seed, we will use external configuration to switch.
-    </p>
-
-    <p>
-      Both the DAL and Repository services use <i>decorator</i> to implement separation of concerns. See examples in
-      the service directory.
-    </p>
-  </div>
-  <h4>Technology Stack</h4>
-  <ul>
-    <li>AngularJS 1.4</li>
-    <li>Bootstrap 3</li>
-    <li>Bootstrap Dialog</li>
-    <li>lodash - Javascript utilities libary</li>
-  </ul>
+        <p>
+            Both the DAL and Repository services use <i>decorator</i> to implement separation of concerns. See examples
+            in
+            the service directory.
+        </p>
+    </div>
+    <h4>Technology Stack</h4>
+    <ul>
+        <li>AngularJS 1.4</li>
+        <li>Bootstrap 3</li>
+        <li>Bootstrap Dialog</li>
+        <li>lodash - Javascript utilities libary</li>
+    </ul>
 </div>

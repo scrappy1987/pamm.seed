@@ -1,47 +1,51 @@
 "use strict";
 
-angular.module('app').controller("projectFormController", ["$scope", "$log", "repository", "$state", function ($scope, $log, repository, $state) {
-    $scope.hasValidationError = false;
+(function () {
 
-    $scope.project = {};
+    angular.module('app')
+        .controller("projectFormController",
+        ["$log", "repository", "$state", ProjectFormCtrl]);
 
-    $scope.saveProject = function (projectForm) {
-        $log.debug("projectFormController: saveRequirement");
+    function ProjectFormCtrl($log, repository, $state) {
+        var vm = this;
+        
+        vm.hasValidationError = false;
 
-        //if (projectForm.$valid) {
-        $scope.hasValidationError = false;
-        $scope.hasSubmitError = false;
+        vm.project = {};
 
-        // This is the spinner - note that you probably won't see this if it is going to mock
-        var waitingDialog = BootstrapDialog.show({
-            message: 'Please wait - Creating Project'
-        });
+        vm.saveProject = function (projectForm) {
+            $log.debug("projectFormController: saveRequirement");
 
-        repository.saveProject($scope.project).then(function (project) {
-            waitingDialog.close();
-            BootstrapDialog.show({
-                message: 'Project Saved successfully',
-                buttons: [{
-                    label: 'Close',
-                    action: function (dialogWindow) {
-                        dialogWindow.close();
-                        $state.go("home.project");
-                    }
-                }]
+            vm.hasValidationError = false;
+            vm.hasSubmitError = false;
+
+            // This is the spinner - note that you probably won't see this if it is going to mock
+            var waitingDialog = BootstrapDialog.show({
+                message: 'Please wait - Creating Project'
             });
-        }, function (error) {
-            // TODO show error dialog
-            waitingDialog.close();
-        });
 
-        // TODO - add validation - this will need show on the HTML
-        //} else {
-        //    $scope.hasValidationError = true;
-        //}
-    };
+            repository.saveProject(vm.project).then(function (project) {
+                waitingDialog.close();
+                BootstrapDialog.show({
+                    message: 'Project Saved successfully',
+                    buttons: [{
+                        label: 'Close',
+                        action: function (dialogWindow) {
+                            dialogWindow.close();
+                            $state.go("home.project");
+                        }
+                    }]
+                });
+            }, function (error) {
+                // TODO show error dialog
+                waitingDialog.close();
+            });
 
-    $scope.cancel = function () {
-        $log.debug("In controller cancel");
+            // TODO - add validation - this will need show on the HTML
+        };
+
+        vm.cancel = function () {
+            $log.debug("In controller cancel");
+        }
     }
-}]);
-
+}());

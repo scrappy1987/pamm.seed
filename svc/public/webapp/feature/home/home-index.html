@@ -1,16 +1,19 @@
 <!--Example home page showing tabs.  This is inheritated by all child states-->
-<div class="home" data-ng-controller="homeController">
-  <header>
-    <ul class="nav nav-tabs">
-      <li data-ng-class="{'active': isAtDashboard()}"><a data-ng-click="navigateToDashboard()">Help/Start</a></li>
-      <li class="dropdown" data-ng-class="{'active': isAtProject() }" >
-        <a  class="dropdown-toggle" data-toggle="dropdown">Sample <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a data-ng-click="navigateToProject()">Manage Project</a></li>
-          <li><a data-ng-click="navigateToAddProject()">Add New Project</a></li>
+<div class="home" data-ng-controller="homeController as homeCtrl">
+    <header>
+        <ul class="nav nav-tabs">
+            <li data-ng-class="{'active': homeCtrl.isAtDashboard()}"><a data-ng-click="homeCtrl.navigateToDashboard()">Help/Start</a></li>
+            <li class="dropdown" data-ng-class="{'active': homeCtrl.isAtProject() }">
+                <a class="dropdown-toggle" data-toggle="dropdown">Sample <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a data-ng-click="homeCtrl.navigateToProject()">Manage Project</a></li>
+                    <li><a data-ng-click="homeCtrl.navigateToAddProject()">Add New Project</a></li>
+                </ul>
+            </li>
+            <li class="navbar-right right-nav-tab"><a data-ng-click="homeCtrl.logout()">Logout</a></li>
         </ul>
-      </li>    </ul>
-  </header>
 
-  <div class="content container-fluid" data-ui-view="home-content"></div>
+    </header>
+
+    <div class="content container-fluid" data-ui-view="home-content"></div>
 </div>

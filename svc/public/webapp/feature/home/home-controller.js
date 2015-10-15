@@ -1,28 +1,39 @@
 "use strict";
 
-angular.module("app").controller("homeController", ["$scope", "$state", "$log", function ($scope, $state, $log) {
+(function () {
+    angular.module("app")
+        .controller("homeController",
+        ["$state", "$log", '$window', HomeCtrl]);
 
-    $scope.isAtDashboard = function() {
-      return $state.is("home.dashboard");
-    };
+    function HomeCtrl($state, $log, $window) {
+        var vm = this;
+        
+        vm.isAtDashboard = function () {
+            return $state.is("home.dashboard");
+        };
 
-    $scope.isAtProject = function() {
-        return $state.includes("home.project");
-    };
+        vm.isAtProject = function () {
+            return $state.includes("home.project");
+        };
 
-    $scope.navigateToDashboard = function() {
-        $log.debug("Going to dahsboard");
-        $state.go("home.dashboard");
+        vm.navigateToDashboard = function () {
+            $log.debug("Going to dahsboard");
+            $state.go("home.dashboard");
+        };
+
+        vm.navigateToAddProject = function () {
+            $state.go("home.projectadd");
+        };
+
+        vm.navigateToProject = function () {
+            $log.debug("Going to project");
+            $state.go("home.project");
+        };
+
+        vm.logout = function () {
+            delete $window.sessionStorage.token;
+            $log.debug("Logging out");
+            $state.go("login");
+        };
     }
-
-    $scope.navigateToAddProject = function() {
-        $state.go("home.projectadd");
-    }
-
-    $scope.navigateToProject = function() {
-        $log.debug("Going to project");
-        $state.go("home.project");
-    }
-
-}]);
-
+}());

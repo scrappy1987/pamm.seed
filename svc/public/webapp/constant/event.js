@@ -4,6 +4,4 @@
  * Event Constants for inter component communication
  * @type {{}}
  */
-var $$event = {
-
-};
+var $$event = {};

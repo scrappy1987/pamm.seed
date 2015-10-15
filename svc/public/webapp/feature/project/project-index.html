@@ -1,14 +1,14 @@
-<div class="container-fluid project-results " data-ng-controller="projectController">
-  <h3>Project List - this page lists all the elements retrived from repository</h3>
-  <hr>
-  <section data-ng-repeat="project in projects | orderBy:'title' track by $index"
-           data-ng-controller="projectItemController" class="row panel panel-default">
-    <div class="panel-heading">
-      <button class="btn btn-danger btn-sm glyphicon glyphicon-remove" title="Delete this project"
-              data-ng-click="delete()"></button>
-      ID:{{project.id}} - {{project.title}} -
-      <small>Status: {{project.status}}</small>
-    </div>
-    <div class="panel-body">{{project.summary}}</div>
-  </section>
+<div class="container-fluid project-results " data-ng-controller="projectController as projectCtrl">
+    <h3>Project List - this page lists all the elements retrived from repository</h3>
+    <hr>
+    <section data-ng-repeat="project in projectCtrl.projects | orderBy:'title' track by $index"
+             data-ng-controller="projectItemController as projectItemCtrl " class="row panel panel-default">
+        <div class="panel-heading">
+            <button class="btn btn-danger btn-sm glyphicon glyphicon-remove" title="Delete this project"
+                    data-ng-click="projectItemCtrl.delete(project)"></button>
+            ID:{{project.id}} - {{project.title}} -
+            <small>Status: {{project.status}}</small>
+        </div>
+        <div class="panel-body">{{project.summary}}</div>
+    </section>
 </div>

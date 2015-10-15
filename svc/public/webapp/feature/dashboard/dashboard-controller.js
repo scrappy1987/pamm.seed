@@ -1,7 +1,12 @@
 "use strict";
+(function () {
 
-angular.module("app").controller("dashboardController", ["$scope", "$state", "$log", function ($scope, $state, $log) {
+    angular.module("app")
+        .controller("dashboardController",
+        ["$log", DashboardCtrl]);
 
-    $log.debug("At Start Page");
-}]);
-
+    function DashboardCtrl ($log) {
+        var vm = this;
+        $log.debug("At Start Page");
+    }
+}());

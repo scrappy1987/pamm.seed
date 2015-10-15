@@ -1,45 +1,44 @@
 "use strict";
 
-/**
- * Global controller
- */
-angular.module("app").controller("loginController", ["$scope", "$state", "$log", "securityManager", function ($scope, $state, $log, securityManager) {
-    $scope.hasValidationError = false;
-    $scope.hasAuthenticationError = false;
-
-    $scope.errorText = {
-        invalidCredentials : $$errorText.INVALID_CREDENTIALS,
-        emptyCredentials : $$errorText.EMPTY_CRENDTIALS
-    };
+(function () {
     /**
-     *
+     * Global controller
      */
-    $scope.register = function () {
-        $state.go("register");
-    };
+    angular.module("app")
+        .controller("loginController",
+        ["$state", "$log", "$window", "securityManager", LoginCtrl]);
 
-    /**
-     * Perform login
-     * @param form The login form
-     */
-    $scope.login = function (form) {
+    function LoginCtrl($state, $log, $window, securityManager) {
+        var vm = this;
 
-        $scope.hasValidationError = false;
-        $scope.hasAuthenticationError = false;
+        vm.hasValidationError = false;
+        vm.hasAuthenticationError = false;
 
-        //if (form.$valid) {
-        //    securityManager.login($scope.credentials.username, $scope.credentials.password).then(
-        //        function (response) {
-        //            $log.debug("Login successful");
+        vm.errorText = {
+            invalidCredentials: $$errorText.INVALID_CREDENTIALS,
+            emptyCredentials: $$errorText.EMPTY_CRENDTIALS
+        };
+
+        /**
+         * Perform login and add the returned token to browser's session storage
+         * @param form The login form
+         */
+        vm.login = function () {
+            vm.hasValidationError = false;
+            vm.hasAuthenticationError = false;
+
+            vm.credentials = {username: vm.username, password: vm.password};
+
+            securityManager.login(vm.credentials).then(function (result) {
+                    $window.sessionStorage.token = result.token;
                     $state.go("home.dashboard");
-        //        }, function (response) {
-        //            $log.debug("Login failed");
-        //            $scope.hasAuthenticationError = true;
-        //        }
-        //    );
-        //} else {
-        //    $scope.hasValidationError = true;
-        //}
-    };
-}]);
-
+                },
+                function (e) {
+                    delete $window.sessionStorage.token;
+                    vm.hasValidationError = true;
+                    vm.hasAuthenticationError = true;
+                    $state.go("login");
+                });
+        };
+    }
+}());

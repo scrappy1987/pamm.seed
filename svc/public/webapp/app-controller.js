@@ -1,8 +1,18 @@
 "use strict";
 
-/**
- * Global controller at index page
- */
-angular.module('app').controller("appController", ["$scope", "$state", "$log", function ($scope, $state, $log) {
-    $log.debug("Application Instantiated");
-}]);
+(function () {
+    /**
+     * Global controller at index page
+     */
+    angular
+        .module('app')
+        .controller("appController",
+        ["$state", "$log", AppCtrl]);
+
+
+    function AppCtrl($state, $log) {
+        var vm = this
+        $log.debug("Application Instantiated");
+    }
+
+}());

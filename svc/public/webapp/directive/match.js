@@ -1,30 +1,36 @@
-/**
- * TODO needs comment
- */
-angular.module('app').directive('match', function() {
-    return {
-        require: 'ngModel',
-        link: function(scope, elem, attrs, ngModel) {
+"use strict";
+(function () {
+    /**
+     * TODO needs comment
+     */
+    angular.module('app')
+        .directive('match', [Match]);
 
-            ngModel.$parsers.unshift(validate);
+    function Match () {
+        return {
+            require: 'ngModel',
+            link: function (scope, elem, attrs, ngModel) {
 
-            //Watch the main ngModel to be matched against so that validate is called when it is changed too
-            scope.$watch(attrs.match, function() {
-                validate(ngModel.$viewValue);
-            });
+                ngModel.$parsers.unshift(validate);
 
-            /**
-             *
-             * @param value
-             * @returns {*}
-             */
-            function validate(value) {
-                var isValid = scope.$eval(attrs.match) == value;
+                //Watch the main ngModel to be matched against so that validate is called when it is changed too
+                scope.$watch(attrs.match, function () {
+                    validate(ngModel.$viewValue);
+                });
 
-                ngModel.$setValidity('match', isValid);
+                /**
+                 *
+                 * @param value
+                 * @returns {*}
+                 */
+                function validate(value) {
+                    var isValid = scope.$eval(attrs.match) == value;
 
-                return isValid ? value : undefined;
+                    ngModel.$setValidity('match', isValid);
+
+                    return isValid ? value : undefined;
+                }
             }
-        }
+        };
     };
-});
+}());

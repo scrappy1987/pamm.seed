@@ -1,6 +1,11 @@
 "use strict";
 
-angular.module("dal", []).service("dal", ["$log", function ($log) {
+(function () {
+    angular.module("dal", [])
+        .service("dal",
+        ["$log", Dal]);
 
-    $log.debug("DAL Instantiated");
-}]);
+    function Dal ($log) {
+        $log.debug("DAL Instantiated");
+    }
+}());

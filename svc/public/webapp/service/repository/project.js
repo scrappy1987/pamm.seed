@@ -1,80 +1,88 @@
 "use strict";
 
-/**
- * Project Repository
- */
-angular.module("repository").decorator("repository", ["$delegate", "$q", "$log", "dal", function ($delegate, $q, $log, dal) {
-
-    var projectCache = [];
-
+(function () {
     /**
-     *
-     * @param criteria
-     * @returns {*}
+     * Project Repository
      */
-    $delegate.getProject = function (criteria) {
-        $log.debug("Repository:Project getProject");
+    angular.module("repository")
+        .decorator("repository",
+        ["$delegate", "$q", "$log", "dal", ProjectRepo]);
 
-        var deferred = $q.defer();
-        dal.getProject(criteria).then(function (results) {
+    function ProjectRepo($delegate, $q, $log, dal) {
 
-            // This is a data change - broadcast events here if your application requires components communication
-            projectCache = results;
-            deferred.resolve(results);
-        }, function (error) {
-            deferred.reject(error);
-        });
+        var projectCache = [];
+        console.log("This is project cache");
+        /**
+         *
+         * @param criteria
+         * @returns {*}
+         */
+        $delegate.getProject = function (criteria) {
+            $log.debug("Repository:Project getProject");
 
-        return deferred.promise;
-    };
+            var deferred = $q.defer();
+            dal.getProject(criteria).then(function (results) {
 
-    /**
-     * Create or update requirement.  A requirement with no ID is new.
-     * @returns {{}}
-     */
-    $delegate.saveProject = function (projectToSave) {
-        $log.debug("Repository:Project - saveProject");
+                // This is a data change - broadcast events here if your application requires components communication
+                projectCache = results;
+                deferred.resolve(results);
+            }, function (error) {
+                deferred.reject(error);
+            });
 
-        var deferred = $q.defer();
-        var isUpdate = projectToSave.hasOwnProperty("id");
+            return deferred.promise;
+        };
+
+        /**
+         * Create or update requirement.  A requirement with no ID is new.
+         * @returns {{}}
+         */
+        $delegate.saveProject = function (projectToSave) {
+            $log.debug("Repository:Project - saveProject");
+
+            var deferred = $q.defer();
+            var isUpdate = projectToSave.hasOwnProperty("id");
 
 
-        $log.debug("isUpdate = " + isUpdate);
-        $log.debug(JSON.stringify(projectToSave));
+            $log.debug("isUpdate = " + isUpdate);
+            $log.debug(JSON.stringify(projectToSave));
 
-        dal.saveProject(projectToSave).then(function (project) {
-            // Add newly created project to cache
-            if (!isUpdate) {
-                projectCache.push(project);
-            }
-            deferred.resolve(project);
-        }, function (error) {
-            deferred.reject(error);
-        });
+            dal.saveProject(projectToSave).then(function (project) {
+                // Add newly created project to cache
+                if (!isUpdate) {
+                    projectCache.push(project);
+                }
+                deferred.resolve(project);
+            }, function (error) {
+                deferred.reject(error);
+            });
 
-        return deferred.promise;
-    };
+            return deferred.promise;
+        };
 
-    /**
-     * Delete the given project
-     * @param projectToDelete
-     * @returns {*}
-     */
-    $delegate.deleteProject = function (projectToDelete) {
-        $log.debug("Repository:Project - deleteProject");
+        /**
+         * Delete the given project
+         * @param projectToDelete
+         * @returns {*}
+         */
+        $delegate.deleteProject = function (projectToDelete) {
+            $log.debug("Repository:Project - deleteProject");
 
-        var deferred = $q.defer();
+            var deferred = $q.defer();
+            dal.deleteProject(projectToDelete).then(function (projects) {
+                _.remove(projectCache, {
+                    id: projectToDelete.id
+                });
 
-        dal.deleteProject(projectToDelete).then(function (projects) {
+                deferred.resolve(projectCache);
+            }, function (error) {
+                deferred.reject(error);
+            });
 
-            deferred.resolve(projects);
-        }, function (error) {
-            deferred.reject(error);
-        });
+            return deferred.promise;
+        };
 
-        return deferred.promise;
-    };
-
-    $log.debug("Repository:Project Instantiated");
-    return $delegate;
-}]);
+        $log.debug("Repository:Project Instantiated");
+        return $delegate;
+    }
+}());

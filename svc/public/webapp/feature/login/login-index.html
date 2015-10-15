@@ -1,23 +1,26 @@
-<main class="login container" data-ng-controller="loginController">
-  <form class="col-md-offset-4 col-md-4 col-xs-offset-2 col-xs-8" name="loginForm" data-ng-submit="login(loginForm)" method="post" novalidate="novalidate">
-    <div class="logo"></div>
-    <div class="alert alert-danger" data-ng-show="hasAuthenticationError">
-      {{errorText.invalidCredentials}}
-    </div>
-    <div class="form-group">
-      <label class="sr-only" for="username">User Name</label>
-      <input class="form-control" type="text" id="username" data-ng-model="credentials.username" placeholder="User Name" required autofocus>
-    </div>
-    <div class="form-group">
-      <label class="sr-only" for="password">Password</label>
-      <input class="form-control" type="password" data-ng-model="credentials.password" id="password" placeholder="Password" required>
-    </div>
-    <div class="" data-ng-show="hasValidationError">
-      {{errorText.emptyCredentials}}
-    </div>
-    <div class="form-group right">
-      <button class="btn btn-primary" type="submit">Login</button>
-    </div>
-    <div class="copyright">(C) 2015</div>
-  </form>
+<main class="login container" data-ng-controller="loginController as loginCtrl">
+    <form class="col-md-offset-4 col-md-4 col-xs-offset-2 col-xs-8" name="loginForm" data-ng-submit="loginCtrl.login()"
+          method="post" novalidate="novalidate">
+        <div class="logo"></div>
+        <div class="alert alert-danger" data-ng-show="loginCtrl.hasAuthenticationError">
+            {{loginCtrl.errorText.invalidCredentials}}
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="username">User Name</label>
+            <input class="form-control" type="text" id="username" data-ng-model="loginCtrl.username"
+                   placeholder="User Name" required autofocus>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="password">Password</label>
+            <input class="form-control" type="password" data-ng-model="loginCtrl.password" id="password"
+                   placeholder="Password" required>
+        </div>
+        <div class="" data-ng-show="loginCtrl.hasValidationError">
+            {{loginCtrl.errorText.emptyCredentials}}
+        </div>
+        <div class="form-group right">
+            <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+        <div class="copyright">(C) 2015</div>
+    </form>
 </main>
