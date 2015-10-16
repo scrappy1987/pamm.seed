@@ -29,7 +29,8 @@
                 BootstrapDialog.show({
                     message: 'Project Saved successfully',
                     buttons: [{
-                        label: 'Close',
+                        id: 'button-close',
+                        label: 'Closer',
                         action: function (dialogWindow) {
                             dialogWindow.close();
                             $state.go("home.project");
@@ -44,7 +45,8 @@
             // TODO - add validation - this will need show on the HTML
         };
 
-        vm.cancel = function () {
+        vm.cancel = function (projectForm) {
+            $state.go("home.project");
             $log.debug("In controller cancel");
         }
     }
