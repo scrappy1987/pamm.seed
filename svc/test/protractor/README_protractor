@@ -1,0 +1,14 @@
+Install nodeJS at https://nodejs.org/en/
+This should give you npm access.
+In your command line (cmd) type in npm to confirm it has installed properly.
+Go to the pamm-ui directory in your cmd/terminal.
+Type in:
+npm install -g protractor
+Assuming you don’t have proxy issues,  this will install two command line tools, protractor and webdriver-manager.
+The webdriver-manager is a helper tool to easily get an instance of a Selenium Server running.
+Use it to download the necessary binaries with the following commands:
+webdriver-manager update
+webdriver-manager start
+
+Now from the directory containing you configuration file run:
+protractor smoke-test.conf.js - where smoke-test.conf.js is the configuration file required by selenium.
