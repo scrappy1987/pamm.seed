@@ -15,7 +15,7 @@ exports.config = {
         global.EC = protractor.ExpectedConditions;
 
         // Do login for each test
-        var pageUrlBase = "../../test/protractor/";
+        var pageUrlBase = "../../test/e2e/";
         var LoginPage = require(pageUrlBase + "login.page.js");
         var page = new LoginPage;
 

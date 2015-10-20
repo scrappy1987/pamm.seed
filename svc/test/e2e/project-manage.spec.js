@@ -1,6 +1,6 @@
 "use strict";
 
-var pageUrlBase = "../../test/protractor/";
+var pageUrlBase = "../../test/e2e/";
 var NavBar = require(pageUrlBase + "navigation-bar.page.js");
 var AddProject = require(pageUrlBase + "add-project.page.js");
 

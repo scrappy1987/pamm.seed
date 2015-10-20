@@ -3,3 +3,5 @@ target/
 src/
 int/target/
 svc/target/
+svc/test-results.xml
+svc/test/reports

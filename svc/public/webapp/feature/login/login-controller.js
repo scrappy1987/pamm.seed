@@ -26,9 +26,7 @@
         vm.login = function () {
             vm.hasValidationError = false;
             vm.hasAuthenticationError = false;
-
             vm.credentials = {username: vm.username, password: vm.password};
-
             securityManager.login(vm.credentials).then(function (result) {
                     $window.sessionStorage.token = result.token;
                     $state.go("home.dashboard");
