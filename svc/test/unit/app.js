@@ -1,1 +1,1 @@
-angular.module('app', ["ui.router", "dal", "repository", "securityManager"]);
+angular.module('app', ["ui.router", "dal", "repository", "securityManager", "util"]);

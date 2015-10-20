@@ -37,7 +37,10 @@ module.exports = function (config) {
 
             <!-- Features being tested -->
             {pattern: 'public/webapp/feature/**/*.js'},
-            {pattern: 'test/unit/feature/**/*.spec.js'}
+            {pattern: 'public/webapp/service/**/*.js'},
+            {pattern: 'test/unit/feature/**/*.spec.js'},
+            {pattern: 'test/unit/service/**/*.spec.js'}
+
         ],
         // list of files to exclude
         exclude: [],

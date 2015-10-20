@@ -23,11 +23,10 @@ describe("When user selects sample from the navbar", function () {
 
     it('Should navigate to add project and add given item', function() {
         navbar.navigateToAddProject();
-        //There is 3 mock projects before adding an additional project
         addProject.addProject("mock title", "mock summary", "mock info");
         addProject.closeModal('button-close');
         expect(browser.getCurrentUrl()).toMatch("/project");
         var todoList = element.all(by.repeater('project in projectCtrl.projects'));
-        expect(todoList.count()).toEqual(4);
+        expect(todoList.count()).toEqual(1);
     });
 });

@@ -1,7 +1,7 @@
 "use strict";
 (function () {
 
-    var app = angular.module("app", ["ui.router", "dal", "securityManager", "repository"]).run(
+    var app = angular.module("app", ["ui.router", "dal", "securityManager", "repository", "util"]).run(
         function ($window, $rootScope, $log) {
             $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
                 // override navigation here (e.g. prevent back button

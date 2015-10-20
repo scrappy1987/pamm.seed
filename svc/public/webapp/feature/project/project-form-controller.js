@@ -30,7 +30,7 @@
                     message: 'Project Saved successfully',
                     buttons: [{
                         id: 'button-close',
-                        label: 'Closer',
+                        label: 'Close',
                         action: function (dialogWindow) {
                             dialogWindow.close();
                             $state.go("home.project");

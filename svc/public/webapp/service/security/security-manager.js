@@ -4,10 +4,10 @@
 
     angular.module("securityManager", [])
         .service("securityManager",
-        ["$q", "$rootScope", "$state", "$location", "$log", "$http", SecurityManager]);
+        ["$q", "$rootScope", "$state", "$location", "$log", "$http",  SecurityManager]);
 
 
-    function SecurityManager($q, $rootScope, $state, $location, $log, $http) {
+    function SecurityManager($q, $rootScope, $state, $location, $log, $http ) {
 
             var hasAuthenticated = false;
             var userCredentials;
