@@ -4,11 +4,11 @@ lazy val root = (project in file("."))
   .aggregate(svc, int)
 
 lazy val svc = (project in file("svc"))
-  .enablePlugins(PlayJava, PlayEbean)
+  .enablePlugins(PlayJava)
   .settings(Settings.basicSettings: _*)
   .settings(Settings.serviceSettings: _*)
   .settings(libraryDependencies ++= Seq(
-    javaJdbc, cache, javaWs
+     javaJpa, hibernate, cache, javaWs, evolutions
   ) ++ Lib.test(
     junit
   ))
@@ -23,4 +23,4 @@ lazy val int = (project in file("int"))
 
 ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
 
-
+fork in run := true

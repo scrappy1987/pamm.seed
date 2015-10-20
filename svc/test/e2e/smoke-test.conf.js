@@ -7,7 +7,7 @@ exports.config = {
     ],
 
     // CHANGE this to test server
-    baseUrl: "http://localhost:8080",
+    baseUrl: "http://localhost:9000",
 
     onPrepare: function () {
         browser.driver.manage().window().setPosition(0, 0);
