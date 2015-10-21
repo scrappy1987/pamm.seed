@@ -1,9 +1,10 @@
 .idea
 target/
 src/
+svc/logs
 int/target/
 svc/target/
-svc/test-results.xml
-svc/test/reports
+svc/test/unit/test-results.xml
+svc/test/unit/reports
 svc/test/cucumber
 svc/test/e2e/node_modules
