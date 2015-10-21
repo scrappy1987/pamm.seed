@@ -2,8 +2,6 @@
   "name": "protractor-cucumber-PAMM",
   "version": "0.1.0",
   "scripts": {
-    "bower": "bower install",
-    "phantom": "./node_modules/.bin/phantomjs --webdriver=4444",
     "test": "./node_modules/.bin/protractor config.js"
   },
   "devDependencies": {

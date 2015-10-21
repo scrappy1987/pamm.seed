@@ -10,9 +10,7 @@ exports.config = {
     ],
 
     capabilities: {
-        browserName: 'phantomjs',
-        version: '',
-        platform: 'ANY'
+        browserName: 'chrome'
     },
 
     onPrepare: function () {

@@ -8,24 +8,27 @@ module.exports = (function () {
     }
 
     LoginPage.prototype.visitPage = function () {
-        browser.get("index.html");
+        return browser.get("/");
     };
 
     LoginPage.prototype.fillUsername = function (username) {
-        this.usernameField.sendKeys(username);
+        return this.usernameField.sendKeys(username);
     };
 
     LoginPage.prototype.fillPassword = function (password) {
         if (password == null) {
             password = "password";
         }
-        this.passwordField.sendKeys(password);
+        return this.passwordField.sendKeys(password);
     };
 
     LoginPage.prototype.login = function () {
-        this.loginButton.click();
+        return this.loginButton.click();
     };
 
+    LoginPage.prototype.currentURL = function (){
+        return browser.getCurrentUrl();
+    };
 
     return LoginPage;
 })();

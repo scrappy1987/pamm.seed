@@ -6,5 +6,6 @@ int/target/
 svc/target/
 svc/test/unit/test-results.xml
 svc/test/unit/reports
+svc/test/unit/node_modules
 svc/test/cucumber
 svc/test/e2e/node_modules

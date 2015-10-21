@@ -1,9 +1,13 @@
 {
   "name": "PAMM",
   "version": "1.0.0",
-  "description": "Rich Client Interface based on AngularJS",
+  "scripts": {
+    "test": "./node_modules/.bin/protractor smoke-test.conf.js"
+  },
   "devDependencies": {
-    "jquery": "latest",
-    "request": "latest"
+    "protractor": "^1.6.0",
+    "jasmine-core": "^2.3.4",
+    "jasmine": "^2.3.2",
+    "request": "2.65.0"
   }
 }
