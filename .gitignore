@@ -6,3 +6,4 @@ svc/target/
 svc/test-results.xml
 svc/test/reports
 svc/test/cucumber
+svc/test/e2e/node_modules
