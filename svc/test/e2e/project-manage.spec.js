@@ -20,13 +20,32 @@ describe("When user selects sample from the navbar", function () {
         expect(browser.getCurrentUrl()).toMatch("/project/add");
     });
 
-
-    it('Should navigate to add project and add given item', function() {
+    it("should navigate to add project", function () {
         navbar.navigateToAddProject();
-        addProject.addProject("mock title", "mock summary", "mock info");
-        addProject.closeModal('button-close');
-        expect(browser.getCurrentUrl()).toMatch("/project");
-        var todoList = element.all(by.repeater('project in projectCtrl.projects'));
-        expect(todoList.count()).toEqual(1);
+        browser.waitForAngular();
+        expect(browser.getCurrentUrl()).toMatch("/project/add");
     });
+
+    it("should navigate to add project", function () {
+        navbar.navigateToAddProject();
+        browser.waitForAngular();
+        expect(browser.getCurrentUrl()).toMatch("/project/add");
+    });
+
+    it("should navigate to add project", function () {
+        navbar.navigateToAddProject();
+        browser.waitForAngular();
+        expect(browser.getCurrentUrl()).toMatch("/project/add");
+    });
+
+
+
+    //it('Should navigate to add project and add given item', function() {
+    //    navbar.navigateToAddProject();
+    //    addProject.addProject("mock title", "mock summary", "mock info");
+    //    addProject.closeModal('button-close');
+    //    expect(browser.getCurrentUrl()).toMatch("/project");
+    //    var todoList = element.all(by.repeater('project in projectCtrl.projects'));
+    //    expect(todoList.count()).toEqual(1);
+    //});
 });
