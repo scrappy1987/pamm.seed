@@ -1,0 +1,9 @@
+{
+  "name": "PAMM",
+  "version": "1.0.0",
+  "description": "Rich Client Interface based on AngularJS",
+  "devDependencies": {
+    "jquery": "latest",
+    "request": "latest"
+  }
+}
