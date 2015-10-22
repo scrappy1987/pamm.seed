@@ -2,7 +2,7 @@
   "name": "protractor-cucumber-PAMM",
   "version": "0.1.0",
   "scripts": {
-    "test": "./node_modules/.bin/protractor config.js"
+    "test": "./node_modules/.bin/protractor conf.js"
   },
   "devDependencies": {
     "phantomjs": "^1.9.0",
