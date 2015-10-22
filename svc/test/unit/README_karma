@@ -1,11 +1,12 @@
 Install nodeJS at https://nodejs.org/en/
 This should give you npm access.
 In your command line (cmd) type in npm to confirm it has installed properly.
-Go to the unit directory in your cmd/terminal.
+Go to the test/unit directory in your cmd/terminal.
 Type in:
 npm install
-Assuming you don’t have proxy issues, this should install karma, karma-jasmine and karma-chrome-launcher for you.
+Assuming you don’t have proxy issues, this should install all the required dependencies into a node_modules folder,
+if you have proxy issues go onto the wifi to download the dependencies
 Next type in:
-Npm install –g karma-cli
-This will let you install karma globally so you just need to type in karma start in the future to run karma instead of doing ./node_modules/karma/bin/karma start
+npm run test
+All unit tests should then run in karma
 

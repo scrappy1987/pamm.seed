@@ -5,11 +5,11 @@ module.exports = function (config) {
         basePath: '../../',
 
         preprocessors: {
-            "../../public/webapp/feature/**/*.js": ['coverage'],
-            "../../public/webapp/service/**/*.js": ['coverage'],
-            "../../public/webapp/constant/**/*.js": ['coverage'],
-            "../../public/webapp/directive/**/*.js": ['coverage'],
-            "../../public/webapp/*.js": ['coverage']
+            "public/webapp/feature/**/*.js": ['coverage'],
+            "public/webapp/service/**/*.js": ['coverage'],
+            "public/webapp/constant/**/*.js": ['coverage'],
+            "public/webapp/directive/**/*.js": ['coverage'],
+            "public/webapp/*.js": ['coverage']
         },
 
         files: [

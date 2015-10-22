@@ -2,12 +2,17 @@
   "name": "PAMM",
   "version": "1.0.0",
   "description": "Rich Client Interface based on AngularJS",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start"
+  },
   "devDependencies": {
     "jasmine-core": "^2.3.4",
-    "karma": "^0.13.10",
+    "karma": "^0.13.11",
     "karma-chrome-launcher": "^0.2.0",
+    "karma-coverage": "^0.5.3",
     "karma-html-reporter": "^0.2.6",
     "karma-jasmine": "^0.3.6",
-    "karma-phantomjs-launcher" : "latest"
+    "karma-phantomjs-launcher": "^0.2.1",
+    "phantomjs": "^1.9.18"
   }
 }
