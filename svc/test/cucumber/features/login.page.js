@@ -11,15 +11,8 @@ module.exports = (function () {
         return browser.get("/");
     };
 
-    LoginPage.prototype.fillUsername = function (username) {
-        return this.usernameField.sendKeys(username);
-    };
-
-    LoginPage.prototype.fillPassword = function (password) {
-        if (password == null) {
-            password = "password";
-        }
-        return this.passwordField.sendKeys(password);
+    LoginPage.prototype.fillInDetails = function (username, password) {
+        return this.usernameField.sendKeys(username) && this.passwordField.sendKeys(password);
     };
 
     LoginPage.prototype.login = function () {

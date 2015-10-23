@@ -60,7 +60,7 @@ module.exports = function (config) {
         autoWatch: false,
 
         // start these browsers when tests are launched
-        browsers: ['PhantomJS'],
+        browsers: ['Chrome'],
 
         // test results reporter to use
         reporters: ['progress', 'coverage'],

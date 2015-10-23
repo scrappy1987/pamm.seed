@@ -18,16 +18,13 @@ module.exports = function() {
         });
     });
 
-    this.Then(/^I enter valid credentials into the input fields$/, function (callback) {
-        login.fillUsername("admin").then(function() {
+    this.Given(/^I enter valid credentials into the input fields$/, function (callback) {
+        login.fillInDetails("admin", "password").then(function() {
             callback();
-        });
-        login.fillPassword("admin").then(function() {
-            callback();
-        });
+        })
     });
 
-    this.Then(/^I click the login button$/, function (callback) {
+    this.When(/^I click the login button$/, function (callback) {
         login.login().then(function() {
             callback();
         });
