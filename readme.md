@@ -37,7 +37,7 @@ Index
 1. Architecture
 ---------------
 
-The following diagram shows the high level reference architecture for the application: ![](./media/image1.gif)
+The following diagram shows the high level reference architecture for the application: ![](./docs/img/pamm.gif)
 
 2. Play Component
 -----------------
@@ -48,7 +48,7 @@ The Play component of the PAMM seed consists of the following component layers:
 
 The Controller layer exposes the applications RESTful API to clients, facilitated by the [Play frameworks routing mechanism](https://www.playframework.com/documentation/2.4.3/JavaRouting). Each controller exposes a RESTful API for a single application resource.
 
-The Controllers responsibility is to accept requests to a resource and then delegate the processing of that request to a Business Service Layer component. The Transactional boundary for the processing of a request is defined on the Controller.![](./media/image2.gif)
+The Controllers responsibility is to accept requests to a resource and then delegate the processing of that request to a Business Service Layer component. The Transactional boundary for the processing of a request is defined on the Controller.![](./docs/img/play.gif)
 
 **2. Business Service Layer**
 
