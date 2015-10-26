@@ -50,7 +50,7 @@ The Play component of the PAMM seed consists of the following component layers:
 
 The Controller layer exposes the applications RESTful API to clients, facilitated by the [Play framework routing mechanism](https://www.playframework.com/documentation/2.4.3/JavaRouting). Each controller exposes a RESTful API for a single application resource.
 
-The Controllers responsibility is to accept requests for a resource and then delegate the processing of that request to a Business Service Layer component. The Transactional boundary for the processing of a request is defined on the Controller.![](./docs/img/play.gif)
+The Controllers responsibility is to accept requests for a resource and delegate the processing of that request to a Business Service Layer component. The Transactional boundary for the processing of a request is defined on the Action methods of the Controllers.![](./docs/img/play.gif)
 
 **2. Business Service Layer**
 
@@ -83,7 +83,7 @@ c) build.sbt - include the dependencies for javaJpa and hibernate.
 
 *EntityManagerProvider*: Factory class to encapsulate the play.db.jpa.JPA static method to return the EntityManager instance for the currently running thread.
 
-Any specific queries required for any of the entities should be placed in the Dao associated with that entity. E.g. If the ProjectEntity requires any database queries not included in the Generic Dao classes, then methods for these database queries should be added in the ProjectDao class.
+Any entity specific queries should be placed in the Dao associated with that entity. E.g. If the ProjectEntity requires a database query not included in the Generic Dao classes, then a method for that database query should be added to the ProjectDao class.
 
 
 3. Angular Component
