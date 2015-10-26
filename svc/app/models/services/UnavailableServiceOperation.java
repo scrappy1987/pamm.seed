@@ -8,7 +8,7 @@ import play.libs.Json;
  */
 public class UnavailableServiceOperation extends ServiceOperation
 {
-    @Override public JsonNode execute(JsonNode jsonRequest)
+    @Override protected JsonNode doExecute(JsonNode jsonRequest)
     {
         //Return JSON stating that this operation is unavailable
         return Json.toJson("{\"message\":\"Service Operation is unavailable\"}");
