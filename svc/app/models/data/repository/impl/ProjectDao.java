@@ -13,4 +13,6 @@ public class ProjectDao extends GenericDao<ProjectEntity>
     {
         super(emp);
     }
+
+    //Add methods for any Project Entity specific database accesses here.
 }
