@@ -34,6 +34,8 @@ Index
 
     3.  End to End Testing
 
+**5. Building and Running the application**
+
 1. Architecture
 ---------------
 
@@ -54,11 +56,11 @@ The Controllers responsibility is to accept requests for a resource and then del
 
 The Business Service layer services provide a [façade](https://en.wikipedia.org/wiki/Facade_pattern) style interface to a number of underlying service operations. Each service is an aggregation of service operations, with each service operation providing business logic to maintain application resources.
 
-Each service operation should inherit from the ServiceOperation superclass, with any system "cross cutting" behaviour (e.g. application level authentication and authorization, audit, error handling) being invoked by the ServiceOperation superclass. Comments have been included in this class as a placeholder for this logic to be included if required.
+Each service operation should inherit from the ServiceOperation superclass, with any application "cross cutting" behaviour (e.g. application level authentication and authorization, audit, error handling) being managed by the ServiceOperation superclass. Comments have been included in this class as a placeholder for this logic to be included if required.
 
 **3. Data Persistence Layer**
 
-The Data / Persistence layer provides the application persistence mechanism and its data model. This seed uses JPA with a Hibernate implementation to persist data to an in-memory H2 database. 
+The Data Persistence layer provides the application persistence mechanism and its data model. This seed uses JPA with a Hibernate implementation to persist data to an in-memory H2 database. 
 
 **3.1 Configuration**
 
@@ -79,7 +81,7 @@ c) build.sbt - include the dependencies for javaJpa and hibernate.
 
 *GenericDao*: Provides generic methods to create, update and delete entities.
 
-*EntityManagerProvider*: Factory class to encapsulate the play.db.jpa.JPA functions. Returns the entity manager instance for the currently running thread.
+*EntityManagerProvider*: Factory class to encapsulate the play.db.jpa.JPA static method to return the EntityManager instance for the currently running thread.
 
 Any specific queries required for any of the entities should be placed in the Dao associated with that entity. E.g. If the ProjectEntity requires any database queries not included in the Generic Dao classes, then methods for these database queries should be added in the ProjectDao class.
 
@@ -90,6 +92,11 @@ Any specific queries required for any of the entities should be placed in the Da
 In Development
 
 4. Testing
+----------
+
+In Development
+
+5. Building and Running the Application
 ----------
 
 In Development
