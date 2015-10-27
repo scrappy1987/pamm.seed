@@ -23,7 +23,7 @@ public class CreateProjectServiceOperation extends ServiceOperation
         this.projectDao = projectDao;
     }
 
-    @Override public JsonNode execute(JsonNode jsonRequest)
+    @Override protected JsonNode doExecute(JsonNode jsonRequest)
     {
         ProjectEntity project = new ProjectEntity();
 

@@ -20,7 +20,7 @@ public class DeleteProjectServiceOperation extends ServiceOperation
         this.projectDao = projectDao;
     }
 
-    @Override public JsonNode execute(JsonNode jsonRequest)
+    @Override protected JsonNode doExecute(JsonNode jsonRequest)
     {
         Long id = Long.parseLong(jsonRequest.findPath("id").textValue());
 
