@@ -1,14 +1,9 @@
 // Do login for each test
 
-var LoginPage = require("./login.page.js");
+var LoginPage = require("../page-models/login.page.js");
 var assert = require('assert');
 
 module.exports = function() {
-
-    this.Before(function (event, callback) {
-        console.log("this is the before scenario");
-        callback();
-    });
 
     var login = new LoginPage;
 

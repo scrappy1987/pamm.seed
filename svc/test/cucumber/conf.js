@@ -6,7 +6,7 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
 
     specs: [
-        'features/*.feature'
+        'features/**/*.feature'
     ],
 
     capabilities: {
@@ -22,7 +22,7 @@ exports.config = {
     framework: 'cucumber',
 
     cucumberOpts: {
-        require: 'features/stepDefinitions.js',
+        require: 'features/**/stepDefinitions.js',
         format: 'pretty' // or summary
     }
 };
