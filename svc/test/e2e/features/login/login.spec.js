@@ -1,7 +1,7 @@
 "use strict";
 
-var pageUrlBase = "../../test/e2e/";
-var LoginPage = require(pageUrlBase + "login.page.js");
+
+var LoginPage = require("../page-models/login.page.js");
 describe("At login", function () {
 
     /**

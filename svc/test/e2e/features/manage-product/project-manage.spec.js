@@ -1,10 +1,9 @@
 "use strict";
 
-var pageUrlBase = "../../test/e2e/";
-var NavBar = require(pageUrlBase + "navigation-bar.page.js");
-var AddProject = require(pageUrlBase + "add-project.page.js");
-var LoginPage = require(pageUrlBase + "login.page.js");
-var SetupServiceCaller = require(pageUrlBase + "setup-service-caller.js");
+var NavBar = require("../page-models/navigation-bar.page.js");
+var AddProject = require("../page-models/add-project.page.js");
+var LoginPage = require("../page-models/login.page.js");
+var SetupServiceCaller = require("../util/setup-service-caller.js");
 
 describe("When user selects sample from the navbar", function () {
     var navbar = new NavBar();

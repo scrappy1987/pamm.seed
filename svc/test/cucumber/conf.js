@@ -1,17 +1,16 @@
 exports.config = {
-
-    // CHANGE this to test server
-    baseUrl: "http://localhost:9000",
-
     seleniumAddress: 'http://localhost:4444/wd/hub',
-
-    specs: [
-        'features/**/*.feature'
-    ],
 
     capabilities: {
         browserName: 'chrome'
     },
+
+    // CHANGE this to test server
+    baseUrl: "http://localhost:9000",
+
+    specs: [
+        'features/**/*.feature'
+    ],
 
     onPrepare: function () {
         browser.driver.manage().window().setPosition(0, 0);

@@ -5,13 +5,12 @@ exports.config = {
         'browserName': 'chrome'
     },
 
-    specs: [
-        "login.spec.js",
-        "project-manage.spec.js"
-    ],
-
     // CHANGE this to test server
     baseUrl: "http://localhost:9000",
+
+    specs: [
+        "features/**/*.spec.js"
+    ],
 
     onPrepare: function () {
         browser.driver.manage().window().setPosition(0, 0);
