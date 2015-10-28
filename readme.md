@@ -34,7 +34,7 @@ Index
 
     3.  Application End to End Testing
 
-**5. Building and Running the application**
+**5. Running the application**
 
 1. Architecture
 ---------------
@@ -202,7 +202,7 @@ The PAMM seed folder structure adheres to the Play application convention, so in
 
 In Development
 
-5. Building and Running the Application
+5. Running the Application
 ----------
 
 Open a command window at the project root folder and enter the following command
