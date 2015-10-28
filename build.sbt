@@ -5,10 +5,12 @@ lazy val root = (project in file("."))
 
 lazy val svc = (project in file("svc"))
   .enablePlugins(PlayJava)
+  .settings(jsTest:= jsTestTask)
+  .settings(Keys.test:= customTestTask.value)
   .settings(Settings.basicSettings: _*)
   .settings(Settings.serviceSettings: _*)
   .settings(libraryDependencies ++= Seq(
-     javaJpa, hibernate, cache, javaWs, evolutions
+    javaJpa, hibernate, cache, javaWs, evolutions
   ) ++ Lib.test(
     junit
   ))
@@ -21,6 +23,8 @@ lazy val int = (project in file("int"))
     cucumberGuice, cucumberJUnit, dbunit, mysqlconn, junit, logback
   ))
 
-ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
+ivyScala := ivyScala.value map {
+  _.copy(overrideScalaVersion = true)
+}
 
 fork in run := true
