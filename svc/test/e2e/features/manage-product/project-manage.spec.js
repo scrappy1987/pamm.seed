@@ -49,4 +49,6 @@ describe("When user selects sample from the navbar", function () {
          var todoList = element.all(by.repeater('project in projectCtrl.projects'));
          expect(todoList.count()).toEqual(1);
       });
+
+
 });
