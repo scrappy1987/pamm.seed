@@ -2,14 +2,14 @@ exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
 
     capabilities: {
-        browserName: 'chrome'
+        'browserName': 'chrome'
     },
 
     // CHANGE this to test server
     baseUrl: "http://localhost:9000",
 
     specs: [
-        'features/**/*.feature'
+        "features/**/*.spec.js"
     ],
 
     onPrepare: function () {
@@ -18,11 +18,13 @@ exports.config = {
         global.EC = protractor.ExpectedConditions;
     },
 
-    framework: 'cucumber',
+    framework: "jasmine2",
 
-    cucumberOpts: {
-        require: 'features/**/stepDefinitions.js',
-        format: 'pretty' // or summary
+    jasmineNodeOpts: {
+        onComplete: null,
+        isVerbose: true,
+        showColors: true,
+        includeStackTrace: false
     }
 };
 
