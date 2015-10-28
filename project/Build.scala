@@ -1,17 +1,17 @@
 import sbt._
 import Keys._
 
-object CustomTest extends Build {
+object ClientTest extends Build {
 
 
-  lazy val jsTest = taskKey[Int]("jsTest")
+  lazy val clientTest = taskKey[Int]("clientTest")
 
-  def jsTestTask = {
+  def clientTestTask = {
     "./svc/test/unit/node_modules/.bin/karma.cmd start ./svc/test/unit/karma.conf.js" !
   }
 
   def customTestTask = Def.taskDyn {
-    val exitCode = (jsTest in Test).value
+    val exitCode = (clientTest in Test).value
     if(exitCode == 0)
       Def.task {
         (Keys.test in Test).value
