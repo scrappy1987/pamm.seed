@@ -28,11 +28,11 @@ Index
 
 **4. Testing**
 
-    1.  Angular Client Unit Testing
+    1.  Application End to End Testing
 
-    2.  Play Unit Testing
+    2.  Angular Client Unit Testing
 
-    3.  Application End to End Testing
+    3.  Play Unit Testing
 
 **5. Running the application**
 
@@ -95,17 +95,22 @@ Any entity specific queries should be placed in the Dao associated with that ent
 ----------
 
 
-### 4.1 Angular Client Unit Testing ###
+### 4.1 Application End To End Testing ###
+
+*In Development*
+
+
+### 4.2 Angular Client Unit Testing ###
 
 For the unit testing of the Angular client components, Jasmine test framework libraries are used to create the test functions, with these tests being run by the karma test runner framework.
 
-#### 4.1.1 Pre requisites ####
+#### 4.2.1 Pre requisites ####
 
 Modules that are required for jasmine unit tests to be run with the karma test runner framework are specified in the [Karma readMe file](svc/test/unit/README_karma).
 
 
 
-#### 4.1.2 Test Configuration ####
+#### 4.2.2 Test Configuration ####
 
 The following configuration files are required to invoke the karma test runner to execute the jasmine unit tests:
 
@@ -153,7 +158,7 @@ The package.json file defines the following properties:
 *devDependencies*: dependencies that don't need to be downloaded by consumers of the module, but are needed for the development of the module.
 
 
-#### 4.1.3 Test structure ####
+#### 4.2.3 Test structure ####
 
 For unit testing of our Angular javascript components, the following convention has been followed.
 
@@ -166,7 +171,7 @@ Each test has an html file defining the files required to run the individual tes
 See [login-controller.test.html](svc/test/unit/feature/login/login-controller.test.html) for an example of an html file defining the test dependencies, and [login-controller.spec.js](svc/test/unit/feature/login/login-controller.spec.js) for example jasmine test scripts.
 
 
-#### 4.1.4 Test Execution ####
+#### 4.2.4 Test Execution ####
 
 
 **Running from command line**
@@ -194,13 +199,10 @@ To run the karma tests open a command window at the project root and enter the f
 This will invoke the Play unit tests as well as the Angular client unit tests.
 
 
-### 4.2 Play Unit Testing ###
+### 4.3 Play Unit Testing ###
 
 The PAMM seed folder structure adheres to the Play application convention, so in order for unit tests in the Play application to be invoked as part of the "sbt test" task, simply follow the instructions as detailed on the [Play Framework Testing page](https://www.playframework.com/documentation/2.4.3/JavaTest). 
 
-### 4.3 Application End To End Testing ###
-
-*In Development*
 
 5. Running the Application
 ----------

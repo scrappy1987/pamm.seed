@@ -12,7 +12,6 @@ public class EntityManagerProvider
 {
     private final Logger.ALogger logger = Logger.of(this.getClass());
 
-
     public EntityManager getEntityManager()
     {
         EntityManager em = null;
