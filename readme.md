@@ -89,7 +89,7 @@ Any entity specific queries should be placed in the Dao associated with that ent
 3. Angular Component
 --------------------
 
-In Development
+*In Development*
 
 4. Testing
 ----------
@@ -200,7 +200,7 @@ The PAMM seed folder structure adheres to the Play application convention, so in
 
 ### 4.3 Application End To End Testing ###
 
-In Development
+*In Development*
 
 5. Running the Application
 ----------
