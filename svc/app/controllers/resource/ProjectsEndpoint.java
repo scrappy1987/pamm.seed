@@ -8,13 +8,13 @@ import play.mvc.Result;
 
 import javax.inject.Inject;
 
-public class ProjectsController extends ResourceController
+public class ProjectsEndpoint extends ResourceEndpoint
 {
-    private static final Logger.ALogger logger = Logger.of(ProjectsController.class);
+    private static final Logger.ALogger logger = Logger.of(ProjectsEndpoint.class);
 
     private ProjectService projectService;
 
-    @Inject public ProjectsController(ProjectService projectService)
+    @Inject public ProjectsEndpoint(ProjectService projectService)
     {
          this.projectService = projectService;
     }

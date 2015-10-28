@@ -18,7 +18,7 @@ Index
 
 **2. Play Component**
 
-    1.  Controllers
+    1.  Http Layer
 
     2.  Business Service Layer
 
@@ -28,11 +28,11 @@ Index
 
 **4. Testing**
 
-    1.  Javascript Unit Testing
+    1.  Angular Client Unit Testing
 
-    2.  Java Unit Testing
+    2.  Play Unit Testing
 
-    3.  End to End Testing
+    3.  Application End to End Testing
 
 **5. Building and Running the application**
 
@@ -46,11 +46,11 @@ The following diagram shows the high level reference architecture for the applic
 
 The Play component of the PAMM seed consists of the following component layers:
 
-### 2.1 Controllers ###
+### 2.1 Http Layer ###
 
-The Controller layer exposes the applications RESTful API to clients, facilitated by the [Play framework routing mechanism](https://www.playframework.com/documentation/2.4.3/JavaRouting). Each controller exposes a RESTful API for a single application resource.
+The Http layer exposes the applications RESTful API to clients, facilitated by the [Play framework routing mechanism](https://www.playframework.com/documentation/2.4.3/JavaRouting). Each resource endpoint exposes a RESTful API for a single application resource.
 
-The Controllers responsibility is to accept requests for a resource and delegate the processing of that request to a Business Service Layer component. The Transactional boundary for the processing of a request is defined on the Action methods of the Controllers.![](./docs/img/play.gif)
+The Resource Endpoints responsibility is to accept requests for a resource and delegate the processing of that request to a Business Service Layer component. The Transactional boundary for the processing of a request is defined on the Action methods of the Resource Endpoints.![](./docs/img/play.gif)
 
 ### 2.2 Business Service Layer ###
 
@@ -95,9 +95,9 @@ In Development
 ----------
 
 
-### 4.1 Javascript Unit Testing ###
+### 4.1 Angular Client Unit Testing ###
 
-For the unit testing of the Angular javascript components, Jasmine test framework libraries are used to create the test functions, with these tests being run by the karma test runner framework.
+For the unit testing of the Angular client components, Jasmine test framework libraries are used to create the test functions, with these tests being run by the karma test runner framework.
 
 #### 4.1.1 Pre requisites ####
 
@@ -183,13 +183,22 @@ Any unsuccessful tests will be displayed on the command window, with details of 
 
 **Running as part of project build**
 
+The [build.sbt](build.sbt) file has been configured to invoke the karma test runner to execute the jasmine unit tests as part of the sbt test task.
+
+The [Build.scala](project/Build.scala) file contains the definition for this client test task
+
+To run the karma tests open a command window at the project root and enter the following command
+
+    sbt test
+
+This will invoke the Play unit tests as well as the Angular client unit tests.
 
 
+### 4.2 Play Unit Testing ###
 
-### 4.2 Java Unit Testing ###
+The PAMM seed folder structure adheres to the Play application convention, so in order for unit tests in the Play application to be invoked as part of the "sbt test" task, simply follow the instructions as detailed on the [Play Framework Testing page](https://www.playframework.com/documentation/2.4.3/JavaTest). 
 
-
-### 4.3 End To End Testing ###
+### 4.3 Application End To End Testing ###
 
 5. Building and Running the Application
 ----------

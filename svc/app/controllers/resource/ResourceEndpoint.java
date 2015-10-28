@@ -9,9 +9,9 @@ import play.mvc.Result;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class ResourceController extends Controller
+public abstract class ResourceEndpoint extends Controller
 {
-    private static final Logger.ALogger logger = Logger.of(ResourceController.class);
+    private static final Logger.ALogger logger = Logger.of(ResourceEndpoint.class);
 
     // GET {path}/resources?queryString
     public Result search(String searchCriteria)
