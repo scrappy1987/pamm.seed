@@ -41,5 +41,4 @@ public class SQLExecutionController extends Controller
 
         return ok(returnValue);
     }
-
 }

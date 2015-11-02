@@ -10,14 +10,15 @@
   },
   "devDependencies": {
     "cucumber": "^0.4.0",
-    "request": "2.65.0",
-    "protractor": "^1.6.0",
-    "jasmine-core": "^2.3.4",
     "jasmine": "^2.3.2",
+    "jasmine-core": "^2.3.4",
     "karma": "^0.13.11",
     "karma-chrome-launcher": "^0.2.0",
     "karma-coverage": "^0.5.3",
     "karma-html-reporter": "^0.2.6",
-    "karma-jasmine": "^0.3.6"
+    "karma-jasmine": "^0.3.6",
+    "protractor": "^1.6.0",
+    "request": "2.65.0",
+    "request-promise": "^1.0.2"
   }
 }

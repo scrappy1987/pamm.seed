@@ -4,8 +4,6 @@ import scala.sys.process.Process
 object EndToEndTestTask extends Build {
     lazy val endToEndTest = taskKey[Unit]("endToEndTest")
 
-    lazy val OS = System.getProperty("os.name");
-
     def endToEndTestTask =  {
         startWebDriverManager
 
@@ -52,7 +50,7 @@ object EndToEndTestTask extends Build {
     def waitForStartup = {
         println("Waiting for startup");
 
-        Thread.sleep(120000)
+        Thread.sleep(45000)
 
         println("Waited for startup");
     }
@@ -62,18 +60,5 @@ object EndToEndTestTask extends Build {
         val pb = Process("buildscripts/batch/runProtractorTests.bat")
 
         val p = pb.!
-    }
-
-    def loadDatabase = {
-//        val conn = DB
-//        try {
-//            val stmt = conn.createStatement
-//            val rs = stmt.executeQuery("SELECT 9 as testkey ")
-//            while (rs.next()) {
-//                outString += rs.getString("testkey")
-//            }
-//        } finally {
-//            conn.close()
-//        }
     }
 }
