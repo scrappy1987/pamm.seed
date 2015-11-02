@@ -1,1 +1,1 @@
-sbt "testsetup/run 9001"
+activator "testsetup/run 9001"

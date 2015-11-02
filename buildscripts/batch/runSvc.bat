@@ -1,1 +1,1 @@
-sbt "svc/run 9000"
+activator "svc/run 9000"
