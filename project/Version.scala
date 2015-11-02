@@ -12,6 +12,6 @@ object Version {
   val JAXRS         = "3.0.9.Final"
   val JAVAEE        = "7.0"
   val HIBERNATE     = "4.3.9.Final"
-  val H2            = "1.4.190"
+  val H2            = "1.4.187"
   val SELENIUM      = "2.48.2"
 }
