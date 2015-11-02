@@ -9,23 +9,6 @@ To test that node has installed successfully, in a command window enter the foll
 The npm command should run successfully.
 
 
---------------------Run your Angular application-----------
-
-Ensure the Angular application that you want to test is running. For this example, open a command
-window at your project root folder (pamm.seed) and enter the following
-
-        activator
-
-Now enter the following commands
-
-        project svc
-
-        run
-
-The pamm.seed application should now be running. Access http://localhost:9000 which should display the login
-page for the pamm.seed application
-
-
 --------------------Install protractor package-------------
 
 The following instructions will install the protractor and webdriver-manager packages globally.
@@ -42,6 +25,23 @@ NOTE: When installing protractor some errors are displayed, but do not seem to a
 To test that protractor has installed successfully run the following command
 
         protractor --version
+
+
+--------------------Run your Angular application-----------
+
+Ensure the Angular application that you want to test is running. For this example, open a command
+window at your project root folder (pamm.seed) and enter the following
+
+        activator
+
+Now enter the following commands
+
+        project svc
+
+        run
+
+The pamm.seed application should now be running. Access http://localhost:9000 which should display the login
+page for the pamm.seed application
 
 
 --------------------Start a Selenium Server instance------
@@ -65,7 +65,7 @@ You can see information about the server status by accessing
 
 From the directory containing the protractor configuration file (test/cucumber/features, run the following command
 
-        protractor config.js
+        protractor conf.js
 
 This will now invoke the tests configured in the config.js file in the cucumberOpts property
 

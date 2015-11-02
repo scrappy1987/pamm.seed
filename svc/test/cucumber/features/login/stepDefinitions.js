@@ -7,25 +7,25 @@ module.exports = function() {
 
     var login = new LoginPage;
 
-    this.Given(/I am on the login page/, function(callback) {
+    this.Given(/I am on the login view/, {timeout: 60 * 1000},  function(callback) {
         login.visitPage().then(function() {
             callback();
         });
     });
 
-    this.Given(/^I enter valid credentials into the input fields$/, function (callback) {
+    this.Given(/^I supply valid credentials$/, function (callback) {
         login.fillInDetails("admin", "password").then(function() {
             callback();
         })
     });
 
-    this.When(/^I click the login button$/, function (callback) {
+    this.When(/^I login$/, function (callback) {
         login.login().then(function() {
             callback();
         });
     });
 
-    this.Then(/^I should be redirected to dashboard$/, function (callback) {
+    this.Then(/^I see the dashboard$/, function (callback) {
         login.currentURL().then(function(currentURL) {
             assert.equal("http://localhost:9000/#/dashboard", currentURL);
             callback();

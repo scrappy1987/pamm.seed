@@ -5,14 +5,14 @@ Feature: Manage project
 
   Scenario: I click manage products and it takes us to our projects
     Given I am on the dashboard
-    And No projects are currently defined
-    When I click on sample
-    Then I click on manage project
-    Then It takes me to an empty project list
+    And There are no projects
+    And I choose sample
+    When I choose manage project
+    Then There are no projects for me to manage
 
    Scenario: I click manage products and it takes us to our projects
      Given I am on the dashboard
-     And there has been three projects already added
-     When I click on sample
-     Then I click on manage project
-     Then It takes me to a project list with three projects already populated
+     And There are three projects
+     And I choose sample
+     When I choose manage project
+     Then There are three projects for me to manage

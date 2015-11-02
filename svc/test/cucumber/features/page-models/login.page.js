@@ -8,7 +8,10 @@ module.exports = (function () {
     }
 
     LoginPage.prototype.visitPage = function () {
-        return browser.get("/");
+        console.log("Getting Login Page");
+        var url = browser.get("/");
+        console.log("Got Login Page");
+        return url;
     };
 
     LoginPage.prototype.fillInDetails = function (username, password) {

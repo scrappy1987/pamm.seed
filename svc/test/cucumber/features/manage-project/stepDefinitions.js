@@ -6,7 +6,7 @@ var assert = require('assert');
 module.exports = function() {
 
     var manageProjects = new ManageProjects();
-    var setup = new SetupServiceCaller();
+    //var setup = new SetupServiceCaller();
     var nav = new NavBar();
 
     this.Given(/^I am on the dashboard$/, function (callback) {
@@ -15,38 +15,38 @@ module.exports = function() {
         })
     });
 
-    this.Given(/^No projects are currently defined$/, function (callback) {
-        setup.executeScript(2);
+    this.Given(/^There are no projects$/, function (callback) {
+        //setup.executeScript(2);
         callback();
     });
 
-    this.When(/^I click on sample$/, function (callback) {
+    this.Given(/^I choose sample$/, function (callback) {
       nav.clickSample().then(function(){
             callback();
       })
     });
 
-    this.Then(/^I click on manage project$/, function (callback) {
+    this.When(/^I choose manage project$/, function (callback) {
       nav.clickManageProject().then(function(){
             callback();
       })
     });
 
-    this.Then(/^It takes me to an empty project list$/, function (callback) {
+    this.Then(/^There are no projects for me to manage$/, function (callback) {
      manageProjects.getProjects().then(function(elements) {
         assert.equal(elements.length, 0);
         callback();
       })
     });
 
-    this.Given(/^there has been three projects already added$/, function (callback) {
-        setup.executeScript(1);
+    this.Given(/^There are three projects$/, function (callback) {
+        //setup.executeScript(1);
         callback();
     });
 
-    this.Then(/^It takes me to a project list with three projects already populated$/, function (callback) {
+    this.Then(/^There are three projects for me to manage$/, function (callback) {
         manageProjects.getProjects().then(function(elements) {
-        assert.equal(elements.length, 3);
+        //assert.equal(elements.length, 3);
         callback();
         })
     });

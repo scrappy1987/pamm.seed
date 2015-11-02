@@ -26,5 +26,8 @@ object Lib {
   val jaxrsClient   = "org.jboss.resteasy"          %   "resteasy-client"         % Version.JAXRS
   val javaee        = "javax"                       %   "javaee-api"              % Version.JAVAEE
   val hibernate     = "org.hibernate"               %   "hibernate-entitymanager" % Version.HIBERNATE
+  val h2            = "com.h2database"              %   "h2"                      % Version.H2
+  val selenium      = "org.seleniumhq.selenium"     %   "selenium-server"         % Version.SELENIUM
+
 
 }
