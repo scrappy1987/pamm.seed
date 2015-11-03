@@ -11,7 +11,7 @@ To test that node has installed successfully, in a command window enter the foll
 
 ------------------Install node module dependencies-------
 
-Open a command window at the test/unit directory and enter the following
+Open a command window at the project root directory and enter the following
 
         npm install
 
@@ -21,9 +21,9 @@ package.json file.
 
 ------------------Run the tests-------------------------
 
-To run the unit tests with karma, open command window at the /test/unit folder and enter the following command
+To run the unit tests with karma, open command window at the project root and enter the following command
 
-        npm run test
+        npm run jasminetest
 
 The test script is defined in the package.json file and executes "./node_modules/.bin/karma start"
 

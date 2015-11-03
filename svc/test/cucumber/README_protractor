@@ -1,4 +1,7 @@
---------------------Install nodejs-------------------------
+********************PRE REQUISITES****************************
+
+
+--------------------1. Install nodejs-------------------------
 
 Install nodeJS at https://nodejs.org/en/, which should give you npm access.
 
@@ -9,11 +12,21 @@ To test that node has installed successfully, in a command window enter the foll
 The npm command should run successfully.
 
 
---------------------Install protractor package-------------
+------------------2. Install node module dependencies-------
+
+Open a command window at the project root directory and enter the following
+
+        npm install
+
+Provided there are no issues with your proxy, this should install all the required dependencies defined in the
+package.json file.
+
+
+--------------------3 Install protractor package-------------
 
 The following instructions will install the protractor and webdriver-manager packages globally.
 
-Open a command window in the projects test/cucumber directory and enter the following command.
+Open a command window in the projects root directory and enter the following command.
 
         npm install -g protractor
 
@@ -27,24 +40,23 @@ To test that protractor has installed successfully run the following command
         protractor --version
 
 
---------------------Run your Angular application-----------
+********************RUNNING PROTRACTOR TESTS*******************
 
-Ensure the Angular application that you want to test is running. For this example, open a command
-window at your project root folder (pamm.seed) and enter the following
+-------------Run Protractor Tests from Sbt Task----------------
 
-        activator
+To run the Protractor tests open a command window at the PAMM seed root folder and 
+enter the following command
 
-Now enter the following commands
+        activator svc/endToEndTest
 
-        project svc
+This will perform the following steps to run the protractor tests 
 
-        run
+NOTE - The following steps will be run automatically as part of the above command and are 
+       provided for information. They do not need to be invoked manually for the Protractor 
+       tests to be run.
 
-The pamm.seed application should now be running. Access http://localhost:9000 which should display the login
-page for the pamm.seed application
 
-
---------------------Start a Selenium Server instance------
+-----------------Step 1 - Start a Selenium Server instance-------
 
 The webdriver-manager is a helper tool to easily get an instance of a Selenium Server running.
 
@@ -61,16 +73,49 @@ You can see information about the server status by accessing
         http://localhost:4444/wd/hub
 
 
---------------------Run the protractor test--------------
 
-From the directory containing the protractor configuration file (test/cucumber/features, run the following command
+-----------------Step 2 - Start an H2 database instance--------
 
-        protractor conf.js
+The H2 database is accesssed by the svc project application and the testsetup project application
 
-This will now invoke the tests configured in the config.js file in the cucumberOpts property
+This is started by running the following command
+
+        javaw -cp %HOMEPATH%\.ivy2\cache\com.h2database\h2\jars\h2-1.4.187.jar org.h2.tools.Server
+
+This will run on port 8082 of the local machine
 
 
---------------------For more information-----------------
+
+-----------------Step 3 - Run testsetup application----------
+
+This Play application provides a RESTful API to run SQL scripts to setup data for each of the protractor tests (if required).
+To run the testsetup Play application,  open a command window at your project root folder (pamm.seed) and enter the following
+
+        activator testsetup/run 9001
+
+The testsetup application should now be running on port 9001. 
+
+
+------------------Step 4 - Run svc application--------------
+
+This is the Angular / Play application which is the focal point on the seed. To run the svc Play application,  open a command window 
+at your project root folder (pamm.seed) and enter the following
+
+        activator svc/run
+
+The svc application should now be running on port 9000. 
+
+
+----------------Step 5 - Run the protractor test------------
+
+From the PAMM seed root directory run the following command
+
+        protractor svc\test\cucumber\conf.js
+
+This will now invoke the tests configured in the cucumberOpts property of the conf.js file 
+
+
+----------------------For more information------------------
 
 The following link provides more information about running protractor tests
 

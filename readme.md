@@ -97,76 +97,134 @@ Any entity specific queries should be placed in the Dao associated with that ent
 
 ### 4.1 Application End To End Testing ###
 
-*In Development*
+For the Application End To End Testing, we are using the Protractor end to end testing framework along with the Cucumber BDD tool. 
+
+Protractor (and our end to end test scripts) run on a node.js server and communicate with a Selenium server through Selenium Webdriver API bindings. This link provides an overview of the [Protractor testing components](https://angular.github.io/protractor/#/infrastructure) and how they collaborate to run the end to end tests:
+
+
+#### 4.1.1 Prerequisites ####
+
+Modules required to run the Protractor end to end tests are specified in the [Protractor readMe file](svc/test/cucumber/README_protractor)
+
+#### 4.1.2 Test Configuration ####
+
+The following files have been configured to run the Protractor end to end tests for the seed:
+
+**[Protractor conf.js file](svc/test/cucumber/conf.js)**
+
+The following link provides a comprehensive list of properties that can be set for your [Protractor configuration](https://github.com/angular/protractor/blob/master/docs/referenceConf.js), and descriptions of how to use these properties.
+
+
+**[package.json](./package.json)**
+
+The following link provides a comprehensive list of properties that can be set for your [npm package.json configuration](https://docs.npmjs.com/files/package.json), and descriptions of how to use these properties.
+
+
+#### 4.1.3 Test structure ####
+
+Each feature being tested will have the following fileset located under the following base folder
+
+		svc/test/cucumber/features/
+
+
+- A Gherkin feature file defining the Feature to be tested and the test scenarios for the feature. See the [manage-project.feature](svc/test/cucumber/features/manage-project/manage-project.feature) for an example feature file.
+
+
+- A cucumber script implementing the steps defined in the Gherkin feature file, to test the scenarios in the Gherkin feature file. See the [manage-project step definition](svc/test/cucumber/features/manage-project/stepDefinition.js) for an example cucumber step definition script.
+ 
+
+- Page Object script(s), encapsulating the user interface actions required by the cucumber scripts in order to implement the scenarios defined in the Gherkin feature file.  See the [manage-project page model](svc/test/cucumber/features/page-models/manage-project.page.js) for an example page model.
+
+
+Scenarios that require data setup, should make use of the testsetup child project included in the seed. This is a Play application exposing a RESTful API for the execution of SQL scripts. To invoke a SQL script through the testsetup application, cucumber scripts should invoke the executeScript(scriptNumber) function of the following script. 
+
+		svc/test/cucumber/features/util/setup-service-caller.js
+
+See the call to setup.executeScript(1) in the  [manage-project step definition](svc/test/cucumber/features/manage-project/stepDefinition.js) for an example.  
+
+The SQL scripts to set up test data should be placed in the following directory of the testsetup child project
+
+		testsetup/conf/sql-scripts/ 
+
+and referenced in the [config.properties](./testsetup/conf/config.properties) file.
+
+
+#### 4.1.4 Test Execution ####
+
+**Running from command line**
+
+To run the Protractor tests open a command window at the PAMM seed root folder.
+
+Enter the following command
+
+     npm run protractor-test
+
+This will invoke the protractor-test "event" in the [package.json](./package.json) file, which runs the command "./node_modules/.bin/protractor svc/test/cucumber/conf.js"
+
+This will output the Gherkin style scenario description for each scenario run, and display which tests have passed or failed. 
+
+**Running as part of project build**
+
+The [build.sbt](build.sbt) file has been configured to invoke the Protractor tests to execute  as part of the sbt endToEndTest task.
+
+The [EndToEndTestTask.scala](project/EndToEndTestTestTask.scala) file contains the definition for this task. The task will start up a selenium server, start an H2 database, run the svc project, run the testsetup project and finally run the protractor tests.
+
+To run the Protractor tests through the build task, open a command window at the PAMM seed root folder and run the following command
+
+    activator svc/endToEndTest
+
+This will invoke the Play unit tests as well as the Angular client unit tests.
 
 
 ### 4.2 Angular Client Unit Testing ###
 
 For the unit testing of the Angular client components, Jasmine test framework libraries are used to create the test functions, with these tests being run by the karma test runner framework.
 
-#### 4.2.1 Pre requisites ####
+#### 4.2.1 Prerequisites ####
 
-Modules that are required for jasmine unit tests to be run with the karma test runner framework are specified in the [Karma readMe file](svc/test/unit/README_karma).
-
+Modules that are required to run the jasmine unit tests with the karma test runner framework are specified in the [Karma readMe file](svc/test/unit/README_karma).
 
 
 #### 4.2.2 Test Configuration ####
 
-The following configuration files are required to invoke the karma test runner to execute the jasmine unit tests:
+The following files have been configured to invoke the karma test runner to execute the jasmine unit tests:
 
 **[karma.conf.js:](svc/test/unit/karma.conf.js)**
 
-The karma.conf.js file defines the following configuration properties:
-
-*frameworks*: set to jasmine for unit testing of the seed. Note that the frameworks in Karma require a plugin / framework library to be installed via npm. For the seed, the jasmine library dependency is defined in the [package.json](svc/test/unit/package.json) file.
+The following link provides a comprehensive list of properties that can be set for your [Karma configuration](http://karma-runner.github.io/0.13/config/configuration-file.html), and descriptions of how to use these properties.
 
 
-*basePath*: root path used to resolve all relative paths defined in the [karma.conf.js:](svc/test/unit/karma.conf.js) file.
+**[package.json](./package.json)**
 
-*preprocessors*: preprocessors allow you to do some work to your files before they get served to the browser. Preprocessors generally have to be loaded as plugins (e.g. coverage, ng-html2js). For the seed, the coverage plugin is configured to be run, and is installed as the karma-coverage plugin defined as a dependency in the [package.json](svc/test/unit/package.json) file.
-
-*files*: the list of files / file patterns that you want to load in the browser.
-
-*exclude*: the list of files file patterns that you want to exclude from being loaded in the browser.
-
-*port*: the webserver port 
-
-*colors*: Enable or diable colours in the output (reports / logs)
-
-*logLevel*: specify the level of logging to be output
-
-*browsers*: list of browsers to launch and capture.
-
-*reporters*: list of reporters to use for the tests. For the seed, progress and coverage reporters are specified. The progress reporter is bundled with karma, but the plugin for the coverage reporter (karma-coverage) is installed through the dependency specified in the [package.json](svc/test/unit/package.json) file. The coverage reporter will create a coverage report for every browser that the tests are run in. In addition, it will create a JSON file that outputs the intermediate data.
-
-*coverage-reporter*: defines the type of report output and where the reports will be stored.
-
-*singleRun*: If true, Karma will start and capture all configured browsers, run tests and then exit with an exit code of 0 or 1 depending on whether all tests passed or any tests failed.
-
-**[package.json](svc/test/unit/package.json)**
-
-The package.json file defines the following properties:
-
-*name*: the name of the module.
-
-*version*: the version of the module.
-
-*description*: this enables people to discover your package as it's listed in npm search.
-
-*scripts*: a dictionary / map of script commands, with the key being the event and the value being the command to run for that event. The seed defines the script event "test" which executes the ./node_modules/.bin/karma start command.
-
-*devDependencies*: dependencies that don't need to be downloaded by consumers of the module, but are needed for the development of the module.
+The following link provides a comprehensive list of properties that can be set for your [npm package.json configuration](https://docs.npmjs.com/files/package.json), and descriptions of how to use these properties.
 
 
 #### 4.2.3 Test structure ####
 
 For unit testing of our Angular javascript components, the following convention has been followed.
 
-For each javascript component that we unit test in the svc/public/webapp folder, a corresponding jasmine unit test component has been created in an identically named folder under the svc/test/unit folder
+For each javascript component that we unit test within the folder
 
-e.g. to test the svc/public/webapp/feature/login/login-controller.js component, there is a corresponding jasmine test file login-controller.test.html located in the svc/test/unit/feature/login/ folder.
+		svc/public/webapp
 
-Each test has an html file defining the files required to run the individual tests and a javascript file containing the jasmine unit tests to be executed.
+a corresponding jasmine unit test component has been created in an identically named folder hierarchy within the folder
+
+		svc/test/unit 
+
+e.g. in order to test the component
+
+		svc/public/webapp/feature/login/login-controller.js 
+
+we would create the following jasmine test script 
+
+		svc/test/unit/feature/login/login-controller.spec.js 
+
+and html file
+
+		svc/test/unit/feature/login/login-controller.test.html 
+
+
+Each test has an html file defining the dependencies required to run the individual tests and a javascript file containing the jasmine unit test scripts to be executed.
 
 See [login-controller.test.html](svc/test/unit/feature/login/login-controller.test.html) for an example of an html file defining the test dependencies, and [login-controller.spec.js](svc/test/unit/feature/login/login-controller.spec.js) for example jasmine test scripts.
 
@@ -176,13 +234,13 @@ See [login-controller.test.html](svc/test/unit/feature/login/login-controller.te
 
 **Running from command line**
 
-To run the jasmine tests with the karma test runner, open a command window at the svc/test/unit folder.
+To run the jasmine tests with the karma test runner, open a command window at the PAMM seed root folder.
 
 Enter the following command
 
-     npm run test
+     npm run jasmine-test
 
-This will invoke the test "event" in the [package.json](svc/test/unit/package.json) file, which runs the command "./node_modules/.bin/karma start"
+This will invoke the test "event" in the [package.json](./package.json) file, which runs the command "./node_modules/.bin/karma start svc/test/unit/karma.conf.js"
 
 Any unsuccessful tests will be displayed on the command window, with details of the test that failed and the name of the jasmine file. 
 
@@ -190,11 +248,11 @@ Any unsuccessful tests will be displayed on the command window, with details of 
 
 The [build.sbt](build.sbt) file has been configured to invoke the karma test runner to execute the jasmine unit tests as part of the sbt test task.
 
-The [Build.scala](project/Build.scala) file contains the definition for this client test task
+The [ClientTestTask.scala](project/ClientTestTask.scala) file contains the definition for this client test task
 
 To run the karma tests open a command window at the project root and enter the following command
 
-    sbt test
+    activator svc/test
 
 This will invoke the Play unit tests as well as the Angular client unit tests.
 
@@ -209,15 +267,7 @@ The PAMM seed folder structure adheres to the Play application convention, so in
 
 Open a command window at the project root folder and enter the following command
 
-    activator
-
-Once the > prompt is displayed, enter the following to navigate to the svc project
-
-    project svc
-
-Once the [svc] $ prompt is displayed enter the following command
-
-    run
+    activator svc/run
 
 Once the "Server started" message is displayed in the command window, access the following URL in your browser
 
