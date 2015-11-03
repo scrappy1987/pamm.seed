@@ -167,7 +167,7 @@ This will output the Gherkin style scenario description for each scenario run, a
 
 The [build.sbt](build.sbt) file has been configured to invoke the Protractor tests to execute  as part of the sbt endToEndTest task.
 
-The [EndToEndTestTask.scala](project/EndToEndTestTestTask.scala) file contains the definition for this task. The task will start up a selenium server, start an H2 database, run the svc project, run the testsetup project and finally run the protractor tests.
+The [EndToEndTestTask.scala](project/EndToEndTestTask.scala) file contains the definition for this task. The task will start up a selenium server, start an H2 database, run the svc project, run the testsetup project and finally run the protractor tests.
 
 To run the Protractor tests through the build task, open a command window at the PAMM seed root folder and run the following command
 
