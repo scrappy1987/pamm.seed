@@ -146,7 +146,7 @@ The SQL scripts to set up test data should be placed in the following directory 
 
 		testsetup/conf/sql-scripts/ 
 
-and referenced in the [config.properties](./testsetup/conf/config.properties) file.
+and referenced in the [config.properties](./testsetup/conf/sql-scripts/config.properties) file.
 
 
 #### 4.1.4 Test Execution ####
