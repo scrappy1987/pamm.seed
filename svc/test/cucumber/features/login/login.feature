@@ -1,7 +1,7 @@
 Feature: Loginpage
   As a user
-  I want to visit the login page
-  So I can log into the application
+  I want my credentials to be recognised
+  So I am authorized to manage projecrs
 
   Scenario: Entering valid credentials into login page takes us to dashboard
     Given I am on the login view
