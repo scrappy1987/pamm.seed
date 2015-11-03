@@ -130,7 +130,7 @@ Each feature being tested will have the following fileset located under the foll
 - A Gherkin feature file defining the Feature to be tested and the test scenarios for the feature. See the [manage-project.feature](svc/test/cucumber/features/manage-project/manage-project.feature) for an example feature file.
 
 
-- A cucumber script implementing the steps defined in the Gherkin feature file, to test the scenarios in the Gherkin feature file. See the [manage-project step definition](svc/test/cucumber/features/manage-project/stepDefinition.js) for an example cucumber step definition script.
+- A cucumber script implementing the steps defined in the Gherkin feature file, to test the scenarios in the Gherkin feature file. See the [manage-project step definition](svc/test/cucumber/features/manage-project/stepDefinitions.js) for an example cucumber step definition script.
  
 
 - Page Object script(s), encapsulating the user interface actions required by the cucumber scripts in order to implement the scenarios defined in the Gherkin feature file.  See the [manage-project page model](svc/test/cucumber/features/page-models/manage-project.page.js) for an example page model.
@@ -140,7 +140,7 @@ Scenarios that require data setup, should make use of the testsetup child projec
 
 		svc/test/cucumber/features/util/setup-service-caller.js
 
-See the call to setup.executeScript(1) in the  [manage-project step definition](svc/test/cucumber/features/manage-project/stepDefinition.js) for an example.  
+See the call to setup.executeScript(1) in the  [manage-project step definition](svc/test/cucumber/features/manage-project/stepDefinitions.js) for an example.  
 
 The SQL scripts to set up test data should be placed in the following directory of the testsetup child project
 
