@@ -265,7 +265,13 @@ The PAMM seed folder structure adheres to the Play application convention, so in
 5. Running the Application
 ----------
 
-Open a command window at the project root folder and enter the following command
+Open a command window at the PAMM seed root folder and enter the following command
+
+	buildscripts\batch\startDatabase.bat
+
+This will start the H2 database server on port 9092.
+
+The start the application by running the following command from the PAMM seed root folder
 
     activator svc/run
 
@@ -273,11 +279,7 @@ Once the "Server started" message is displayed in the command window, access the
 
     http://localhost:9000
 
-The PAMM login page should be presented. The seed has no authentication configured for this initial draft version, so by entering any username and password, the PAMM dashboard should be displayed. The angular client is integrated with the Play backend and any actions on the Angular client will be routed to the Play backend. 
-
-**Note**: Projects added via the "Add New Project" feature of the PAMM application will be stored in an embedded in-memory H2 database. This initial version of the seed has no permanent persistence configured and any data stored in the H2 database will be lost when activator is stopped by entering the following command at the [svc] $ prompt
-
-    exit
+The PAMM login page should be presented. The seed has no authentication configured for this initial draft version, so by entering any username and password, the PAMM dashboard should be displayed. The angular client is integrated with the Play backend and any actions on the Angular client will be routed to the Play backend.
 
 
 
