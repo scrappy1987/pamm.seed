@@ -1,1 +1,1 @@
-START /B  protractor svc\test\cucumber\conf.js
+protractor svc\test\cucumber\conf.js

@@ -13,3 +13,4 @@ svc/test/e2e/node_modules
 target/
 testsetup/logs
 testsetup/target
+test-e2e-results
