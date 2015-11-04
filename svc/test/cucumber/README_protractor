@@ -14,7 +14,7 @@ The npm command should run successfully.
 
 ------------------2. Install node module dependencies-------
 
-Open a command window at the project root directory and enter the following
+Open a command window at the PAMM seed root folder and enter the following
 
         npm install
 
@@ -26,11 +26,11 @@ package.json file.
 
 The following instructions will install the protractor and webdriver-manager packages globally.
 
-Open a command window in the projects root directory and enter the following command.
+Open a command window at the PAMM seed root folder and enter the following command.
 
         npm install -g protractor
 
-Provided there are no issues with the proxy, this the protractor and webdriver-manager globably packages
+Provided there are no issues with the proxy, the protractor and webdriver-manager globably packages
 will be installed globally.
 
 NOTE: When installing protractor some errors are displayed, but do not seem to affect the installation.
@@ -98,7 +98,7 @@ The testsetup application should now be running on port 9001.
 
 ------------------Step 4 - Run svc application--------------
 
-This is the Angular / Play application which is the focal point on the seed. To run the svc Play application,  open a command window 
+This is the Angular / Play application which is the main application of the seed. To run the svc Play application,  open a command window 
 at your project root folder (pamm.seed) and enter the following
 
         activator svc/run
@@ -112,7 +112,7 @@ From the PAMM seed root directory run the following command
 
         protractor svc\test\cucumber\conf.js
 
-This will now invoke the tests configured in the cucumberOpts property of the conf.js file 
+This will now invoke the tests configured in the cucumberOpts "require" property of the conf.js file 
 
 
 ----------------------For more information------------------

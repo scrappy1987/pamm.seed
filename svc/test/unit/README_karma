@@ -11,7 +11,7 @@ To test that node has installed successfully, in a command window enter the foll
 
 ------------------Install node module dependencies-------
 
-Open a command window at the project root directory and enter the following
+Open a command window at the PAMM seed root folder and enter the following
 
         npm install
 
@@ -21,7 +21,7 @@ package.json file.
 
 ------------------Run the tests-------------------------
 
-To run the unit tests with karma, open command window at the project root and enter the following command
+To run the unit tests with karma, open command window at the PAMM seed root folder and enter the following command
 
         npm run jasminetest
 

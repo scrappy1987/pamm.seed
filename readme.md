@@ -157,7 +157,7 @@ To run the Protractor tests open a command window at the PAMM seed root folder.
 
 Enter the following command
 
-     npm run protractor-test
+	npm run protractor-test
 
 This will invoke the protractor-test "event" in the [package.json](./package.json) file, which runs the command "./node_modules/.bin/protractor svc/test/cucumber/conf.js"
 
