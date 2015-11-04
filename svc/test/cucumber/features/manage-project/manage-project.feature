@@ -3,14 +3,14 @@ Feature: Manage project
   I want to view projects
   So that I know what projects are in progress
 
-  Scenario: I manage products when there are no projects
+  Scenario: I can manage projects when there are no existing projects
     Given I am on the dashboard
     And There are no projects
     And I choose sample
     When I choose manage project
     Then There are no projects for me to manage
 
-   Scenario: I manage products when there are existing projects
+   Scenario: I can manage projects when there are existing projects
      Given I am on the dashboard
      And There are three projects
      And I choose sample

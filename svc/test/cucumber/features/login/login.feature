@@ -1,9 +1,9 @@
 Feature: Loginpage
   As a user
   I want my credentials to be recognised
-  So I am authorized to manage projecrs
+  So I am authorized to manage projects
 
-  Scenario: Entering valid credentials into login page takes us to dashboard
+  Scenario: When I supply valid credentials I am granted access to projects dashboard
     Given I am on the login view
     And I supply valid credentials
     When I login
