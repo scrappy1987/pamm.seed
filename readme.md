@@ -173,7 +173,13 @@ To run the Protractor tests through the build task, open a command window at the
 
     activator svc/endToEndTest
 
-This will invoke the Play unit tests as well as the Angular client unit tests.
+This will invoke all processes on which the Protractor tests are dependent (Selenium Server, H2 database server, svc Play application and testsetup Play application). Once these processes have successfully started, the Protractor tests will be run. After completion of the Protractor tests, all dependent processes are automatically stopped by this build task.
+
+The output from the Test run is written to the following folder under the PAMM seed root folder
+
+	test-e2e-results/CCYY-MM-DD-HH.mm.ss.SSS
+
+where CCYY-MM-DD-HH.mm.ss.SSS is the timestamp for the test run. Each test run will result in a new folder being created to store its test output. The Protractor test results are stored in the file protractorResults.log in the above folder.
 
 
 ### 4.2 Angular Client Unit Testing ###
