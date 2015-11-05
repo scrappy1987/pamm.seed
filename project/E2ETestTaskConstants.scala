@@ -5,7 +5,7 @@ import sbt._
 
 object E2ETestTaskConstants extends Build {
   val FOLDER_TIMESTAMP_FORMAT = "yyyy-MM-dd-HH.mm.ss.SSS"
-  
+
   val TEST_RUNTIME = getTestRuntime()
 
   val WINDOWS_OS = "Windows"

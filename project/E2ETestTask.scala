@@ -33,7 +33,7 @@ object E2ETestTask extends Build {
 
   def stopAsyncProcesses(ports: Array[String]) = {
     ports.foreach(f => {
-      stopAsyncProcess(f, f + E2ETestTaskConstants.OUTPUT_LOG_SUFFIX)
+      stopAsyncProcess(f, E2ETestTaskConstants.STOP_PROCESS_SCRIPT + E2ETestTaskConstants.OUTPUT_LOG_SUFFIX)
     })
   }
 
