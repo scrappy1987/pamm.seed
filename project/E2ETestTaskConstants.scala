@@ -57,7 +57,6 @@ object E2ETestTaskConstants extends Build {
   val LOGICAL_OR = (a: Boolean, b: Boolean) => a || b
 
   def getTestRuntime(): String = {
-    System.out.println("Getting test runtime for FOLDER TIMESTAMP FORMAT " + FOLDER_TIMESTAMP_FORMAT)
     val sdfDate = new SimpleDateFormat(FOLDER_TIMESTAMP_FORMAT);
     sdfDate.format(new Date())
   }
