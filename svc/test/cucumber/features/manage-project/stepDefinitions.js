@@ -5,7 +5,7 @@ var assert = require('assert');
 
 module.exports = function () {
 
-    this.setDefaultTimeout(20000);
+    this.setDefaultTimeout(60000);
     var manageProjects = new ManageProjects();
     var setup = new SetupServiceCaller();
     var nav = new NavBar();
