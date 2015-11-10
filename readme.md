@@ -54,7 +54,7 @@ The Play component of the PAMM seed consists of the following layers:
 
 The Http layer exposes the applications RESTful API to clients, facilitated by the [Play framework routing mechanism](https://www.playframework.com/documentation/2.4.3/JavaRouting). Each resource endpoint exposes a RESTful API for a single application resource.
 
-The Resource Endpoints responsibility is to accept requests for a resource and delegate the processing of that request to a Business Service Layer component. The Transactional boundary for the processing of a request is defined on the Action methods of the Resource Endpoints.
+The Resource Endpoints responsibility is to accept requests for a resource and delegate the processing of that request to a Business Service Layer component. The Transactional boundary for the processing of a request is defined on the Action methods of the Resource Endpoint. All resource endpoint implementations should extend the [ResourceEndpoint](./svc/app/controllers/resource/play/ResourceEndpoint.java) superclass. See [ProjectEndpoint](./svc/app/controllers/resource/play/ProjectEndpoint.java) for a basic implementation.
 
 
 ### 2.2 Business Service Layer ###
@@ -68,9 +68,9 @@ Each service operation should inherit from the ServiceOperation superclass, with
 
 The Repository is an abstraction layer, hiding details of any persistence mechanism from the applications business logic in the Business Service layer. This abstraction layer enables the persistence mechanism to be changed without having an effect on the Business layer. It also facilitates testing of the Business layer in isolation from the Persistence layer.
 
-This seed provides a basic example of a Repository implementation, the [ProjectJpaRepository](./svc/models/repository/jpa/ProjectJpaRespository.java), which persists to a Relational H2 database, using the JPA interface with a Hibernate implementation. 
+This seed provides a basic example of a Repository implementation, the [ProjectJpaRepository](./svc/app/models/repository/jpa/ProjectJpaRespository.java), which persists to a Relational H2 database, using the JPA interface with a Hibernate implementation. 
 
-To change the persistence mechanism, a new implementation of the [Repository`<Project`>](./svc/models/services/project/ProjectRepository.java) needs to be created and injected into the Business layers service operations. To change the implementation of the Repository being injected into the Business Layer operations, amend the bindings defined in [RepositoriesModule](./svc/util/inject/play/RepositoriesModule.java).
+To change the persistence mechanism, a new implementation of the [Repository`<Project`>](./svc/app/models/services/project/ProjectRepository.java) needs to be created and injected into the Business layers service operations. To change the implementation of the Repository being injected into the Business Layer operations, amend the bindings defined in [RepositoriesModule](./svc/app/util/inject/play/RepositoriesModule.java).
 
 A Repository should be created for the "aggregate root" (i.e. the root object in the object graph) of an application feature or component. Defining the granularity of repositories is something that has to be carried out on a project by project basis. 
 
