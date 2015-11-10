@@ -68,7 +68,7 @@ Each service operation should inherit from the ServiceOperation superclass, with
 
 The Repository is an abstraction layer, hiding details of any persistence mechanism from the applications business logic in the Business Service layer. This abstraction layer enables the persistence mechanism to be changed without having an effect on the Business layer. It also facilitates testing of the Business layer in isolation from the Persistence layer.
 
-This seed provides a basic example of a Repository implementation, the [ProjectJpaRepository](./svc/app/models/repository/jpa/ProjectJpaRespository.java), which persists to a Relational H2 database, using the JPA interface with a Hibernate implementation. 
+This seed provides a basic example of a Repository implementation, the [ProjectJpaRepository](./svc/app/models/repository/jpa/ProjectJpaRepository.java), which persists to a Relational H2 database, using the JPA interface with a Hibernate implementation. 
 
 To change the persistence mechanism, a new implementation of the [Repository`<Project`>](./svc/app/models/services/project/ProjectRepository.java) needs to be created and injected into the Business layers service operations. To change the implementation of the Repository being injected into the Business Layer operations, amend the bindings defined in [RepositoriesModule](./svc/app/util/inject/play/RepositoriesModule.java).
 
@@ -186,7 +186,7 @@ This will output the Gherkin style scenario description for each scenario run, a
 
 The [build.sbt](build.sbt) file has been configured to invoke the Protractor tests to execute  as part of the sbt endToEndTest task.
 
-The [EndToEndTestTask.scala](project/EndToEndTestTask.scala) file contains the definition for this task. The task will start up a selenium server, start an H2 database, run the svc project, run the testsetup project and finally run the protractor tests.
+The [E2ETestTask.scala](project/E2ETestTask.scala) file contains the definition for this task. The task will start up a selenium server, start an H2 database, run the svc project, run the testsetup project and finally run the protractor tests.
 
 To run the Protractor tests through the build task, open a command window at the PAMM seed root folder and run the following command
 
