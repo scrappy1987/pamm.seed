@@ -3,13 +3,10 @@ package models.services.project;
 import com.fasterxml.jackson.databind.JsonNode;
 import models.services.Service;
 import models.services.UnavailableServiceOperation;
-import play.libs.Json;
+import util.json.play.JSONHelper;
 
 import javax.inject.Inject;
 
-/**
- * Created by a560832 on 16/10/2015.
- */
 public class ProjectService extends Service
 {
     private CreateProjectServiceOperation createProjectServiceOperation;
@@ -22,12 +19,15 @@ public class ProjectService extends Service
 
     private FindProjectServiceOperation findProjectServiceOperation;
 
+    private JSONHelper jsonHelper;
+
     @Inject public ProjectService(UnavailableServiceOperation unavailableServiceOperation,
             CreateProjectServiceOperation createProjectServiceOperation,
             ListProjectsServiceOperation listProjectsServiceOperation,
             UpdateProjectServiceOperation updateProjectServiceOperation,
             DeleteProjectServiceOperation deleteProjectServiceOperation,
-            FindProjectServiceOperation findProjectServiceOperation)
+            FindProjectServiceOperation findProjectServiceOperation,
+            JSONHelper jsonHelper)
     {
         super(unavailableServiceOperation);
 
@@ -40,11 +40,13 @@ public class ProjectService extends Service
         this.deleteProjectServiceOperation = deleteProjectServiceOperation;
 
         this.findProjectServiceOperation = findProjectServiceOperation;
+
+        this.jsonHelper = jsonHelper;
     }
 
     @Override public JsonNode list()
     {
-        return listProjectsServiceOperation.execute(Json.toJson(""));
+        return listProjectsServiceOperation.execute(jsonHelper.toJson(""));
     }
 
     @Override public JsonNode create(JsonNode jsonResource)

@@ -1,1 +1,1 @@
-lsof -i:$1 -t
+lsof -i -t

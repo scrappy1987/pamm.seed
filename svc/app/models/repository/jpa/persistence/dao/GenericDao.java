@@ -1,5 +1,6 @@
-package models.data.repository;
+package models.repository.jpa.persistence.dao;
 
+import models.repository.jpa.persistence.dao.play.EntityManagerProvider;
 import play.Logger;
 
 public abstract class GenericDao<T> extends GenericReadOnlyDao<T>

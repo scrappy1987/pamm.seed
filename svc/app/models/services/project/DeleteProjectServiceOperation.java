@@ -1,10 +1,10 @@
 package models.services.project;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.data.repository.impl.ProjectDao;
 import models.services.ServiceOperation;
+import models.services.project.businessobjects.Project;
 import play.Logger;
-import play.libs.Json;
+import util.json.play.JSONHelper;
 
 import javax.inject.Inject;
 
@@ -12,22 +12,26 @@ public class DeleteProjectServiceOperation extends ServiceOperation
 {
     private static final Logger.ALogger logger = Logger.of(CreateProjectServiceOperation.class);
 
-    private ProjectDao projectDao;
+    private ProjectRepository repository;
+
+    private JSONHelper jsonHelper;
 
     @Inject
-    public DeleteProjectServiceOperation(ProjectDao projectDao)
+    public DeleteProjectServiceOperation(ProjectRepository repository, JSONHelper jsonHelper)
     {
-        this.projectDao = projectDao;
+        this.repository = repository;
+
+        this.jsonHelper = jsonHelper;
     }
 
     @Override protected JsonNode doExecute(JsonNode jsonRequest)
     {
         Long id = Long.parseLong(jsonRequest.findPath("id").textValue());
 
-        logger.info("Deleting ProjectEntity with id " + id);
+        Project project = repository.get(id);
 
-        projectDao.delete(id);
+        repository.remove(project);
 
-        return Json.parse("{\"message\":\"Deleted Project with id" + id + "\"}");
+        return jsonHelper.toJson("{\"message\":\"Deleted Project with id" + id + "\"}");
     }
 }

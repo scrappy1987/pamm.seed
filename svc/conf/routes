@@ -7,11 +7,11 @@
 
 # DYNAMIC CONTENT
 
-GET         /project        controllers.resource.ProjectsEndpoint.list()
-GET         /project/:id    controllers.resource.ProjectsEndpoint.find(id: Long)
-POST        /project        controllers.resource.ProjectsEndpoint.create()
-PUT         /project        controllers.resource.ProjectsEndpoint.update()
-DELETE      /project/:id    controllers.resource.ProjectsEndpoint.delete(id: Long)
+GET         /project        controllers.resource.play.ProjectsEndpoint.list()
+GET         /project/:id    controllers.resource.play.ProjectsEndpoint.find(id: Long)
+POST        /project        controllers.resource.play.ProjectsEndpoint.create()
+PUT         /project        controllers.resource.play.ProjectsEndpoint.update()
+DELETE      /project/:id    controllers.resource.play.ProjectsEndpoint.delete(id: Long)
 
 
 #STATIC CONTENT

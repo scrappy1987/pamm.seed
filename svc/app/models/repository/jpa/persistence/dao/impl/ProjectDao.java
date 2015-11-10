@@ -1,8 +1,8 @@
-package models.data.repository.impl;
+package models.repository.jpa.persistence.dao.impl;
 
-import models.data.entities.ProjectEntity;
-import models.data.repository.EntityManagerProvider;
-import models.data.repository.GenericDao;
+import models.repository.jpa.persistence.entities.ProjectEntity;
+import models.repository.jpa.persistence.dao.play.EntityManagerProvider;
+import models.repository.jpa.persistence.dao.GenericDao;
 
 import javax.inject.Inject;
 

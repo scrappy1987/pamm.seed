@@ -1,37 +1,35 @@
 package models.services.project;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.data.entities.ProjectEntity;
-import models.data.repository.impl.ProjectDao;
 import models.services.ServiceOperation;
+import models.services.project.businessobjects.Project;
 import play.Logger;
-import play.libs.Json;
+import util.json.play.JSONHelper;
 
 import javax.inject.Inject;
 
-/**
- * Created by a560832 on 16/10/2015.
- */
 public class FindProjectServiceOperation extends ServiceOperation
 {
     private static final Logger.ALogger logger = Logger.of(FindProjectServiceOperation.class);
 
-    private ProjectDao projectDao;
+    private ProjectRepository repository;
+
+    private JSONHelper jsonHelper;
 
     @Inject
-    public FindProjectServiceOperation(ProjectDao projectDao)
+    public FindProjectServiceOperation(ProjectRepository repository, JSONHelper jsonHelper)
     {
-        this.projectDao = projectDao;
+        this.repository = repository;
+
+        this.jsonHelper = jsonHelper;
     }
 
     @Override protected JsonNode doExecute(JsonNode jsonRequest)
     {
         Long id = Long.parseLong(jsonRequest.findPath("id").textValue());
 
-        logger.info("Deleting ProjectEntity with id " + id);
+        Project project = repository.get(id);
 
-        ProjectEntity project = projectDao.find(id);
-
-        return Json.toJson(project);
+        return jsonHelper.toJson(project);
     }
 }

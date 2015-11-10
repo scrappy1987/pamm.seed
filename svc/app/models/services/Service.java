@@ -1,11 +1,7 @@
 package models.services;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import play.libs.Json;
 
-/**
- * Created by a560832 on 16/10/2015.
- */
 public abstract class Service
 {
     private UnavailableServiceOperation unavailableOperation;
@@ -22,7 +18,7 @@ public abstract class Service
 
     public JsonNode list()
     {
-        return unavailableOperation.execute(Json.toJson(""));
+        return unavailableOperation.execute(null);
     }
 
     public JsonNode find(JsonNode identifier)

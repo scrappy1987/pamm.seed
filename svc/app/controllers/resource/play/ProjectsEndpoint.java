@@ -1,4 +1,4 @@
-package controllers.resource;
+package controllers.resource.play;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import models.services.project.ProjectService;

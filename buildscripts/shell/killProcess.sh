@@ -1,1 +1,1 @@
-kill lsof -i:$1 -t
+kill $(lsof -i:$1 -t)

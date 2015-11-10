@@ -1,4 +1,4 @@
-package models.data.repository;
+package models.repository.jpa.persistence.dao.play;
 
 import play.Logger;
 import play.db.jpa.JPA;

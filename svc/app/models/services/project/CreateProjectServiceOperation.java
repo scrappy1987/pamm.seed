@@ -1,31 +1,27 @@
 package models.services.project;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.data.entities.ProjectEntity;
-import models.data.repository.impl.ProjectDao;
 import models.services.ServiceOperation;
+import models.services.project.businessobjects.Project;
 import play.Logger;
 
 import javax.inject.Inject;
 
-/**
- * Created by a560832 on 14/10/2015.
- */
 public class CreateProjectServiceOperation extends ServiceOperation
 {
     private static final Logger.ALogger logger = Logger.of(CreateProjectServiceOperation.class);
 
-    private ProjectDao projectDao;
+    private ProjectRepository repository;
 
     @Inject
-    public CreateProjectServiceOperation(ProjectDao projectDao)
+    public CreateProjectServiceOperation(ProjectRepository repository)
     {
-        this.projectDao = projectDao;
+        this.repository = repository;
     }
 
     @Override protected JsonNode doExecute(JsonNode jsonRequest)
     {
-        ProjectEntity project = new ProjectEntity();
+        Project project = new Project();
 
         project.setStatus(jsonRequest.findPath("status").textValue());
 
@@ -35,9 +31,7 @@ public class CreateProjectServiceOperation extends ServiceOperation
 
         project.setSummary(jsonRequest.findPath("summary").textValue());
 
-        logger.info("Created ProjectEntity instance from JSON");
-
-        projectDao.create(project);
+        repository.set(project);
 
         return jsonRequest;
     }

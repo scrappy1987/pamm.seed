@@ -1,36 +1,16 @@
-package models.data.entities;
+package models.services.project.businessobjects;
 
-import javax.persistence.*;
+import models.services.businessobjects.BusinessObject;
 
-@Table(name = "project")
-@Entity
-public class ProjectEntity
+public class Project extends BusinessObject
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "summary", nullable = false)
     private String summary;
 
-    @Column(name = "info", nullable = false)
     private String info;
 
-    @Column(name = "status", nullable = false)
     private String status;
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
 
     public String getStatus()
     {
