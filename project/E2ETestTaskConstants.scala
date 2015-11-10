@@ -44,7 +44,7 @@ object E2ETestTaskConstants extends Build {
 
   val PROCESSES_NOT_STARTED = "Protractor Tests cannot be run, dependent processes did not start. Check processes running on the following ports " + PORTS
 
-  val MAX_WAIT = 45000
+  val MAX_WAIT = 120000
 
   val WAIT_INTERVAL = 5000
 

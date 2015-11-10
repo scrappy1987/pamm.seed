@@ -5,7 +5,7 @@ var assert = require('assert');
 
 module.exports = function () {
 
-    this.setDefaultTimeout(30000);
+    this.setDefaultTimeout(60000);
     var login = new LoginPage;
 
     this.Given(/I am on the login view/, function (callback) {
