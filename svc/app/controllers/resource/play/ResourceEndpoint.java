@@ -25,8 +25,6 @@ public abstract class ResourceEndpoint<T extends Service> extends Controller
     // GET {path}/project
     @Transactional public Result list()
     {
-        logger.info("Getting list of projects ");
-
         JsonNode jsonResponse = service.list();
 
         return ok(jsonResponse);
@@ -35,8 +33,6 @@ public abstract class ResourceEndpoint<T extends Service> extends Controller
     // GET {path}/project/:id
     @Transactional public Result find(Long id)
     {
-        logger.info("Getting list of projects ");
-
         JsonNode jsonResponse = service.find(getIdAsJson(id));
 
         return ok(jsonResponse);
@@ -45,8 +41,6 @@ public abstract class ResourceEndpoint<T extends Service> extends Controller
     // POST {path}/project
     @Transactional public Result create()
     {
-        logger.info("In the create method of the ProjectController");
-
         JsonNode jsonResponse = service.create(request().body().asJson());
 
         return ok(jsonResponse);
@@ -55,8 +49,6 @@ public abstract class ResourceEndpoint<T extends Service> extends Controller
     // PUT {path}/project
     @Transactional public Result update()
     {
-        logger.info("In the create method of the ProjectController");
-
         JsonNode jsonResponse = service.update(request().body().asJson());
 
         return ok(jsonResponse);
@@ -65,8 +57,6 @@ public abstract class ResourceEndpoint<T extends Service> extends Controller
     // DELETE {path}/project/:id
     @Transactional public Result delete(Long id)
     {
-        logger.info("In the delete method of the ProjectController");
-
         JsonNode jsonResponse = service.delete(getIdAsJson(id));
 
         return ok(jsonResponse);
