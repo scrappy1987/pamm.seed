@@ -22,7 +22,9 @@ Index
 
     2.  Business Service Layer
 
-    3.  Data Persistence Layer
+	3.  Repository Layer
+
+    4.  Persistence Layer
 
 **3. Angular Component**
 
@@ -44,13 +46,16 @@ The following diagram shows the high level reference architecture for the applic
 2. Play Component
 -----------------
 
-The Play component of the PAMM seed consists of the following component layers:
+The Play component of the PAMM seed consists of the following layers:
+
+![](./docs/img/play.gif)
 
 ### 2.1 Http Layer ###
 
 The Http layer exposes the applications RESTful API to clients, facilitated by the [Play framework routing mechanism](https://www.playframework.com/documentation/2.4.3/JavaRouting). Each resource endpoint exposes a RESTful API for a single application resource.
 
-The Resource Endpoints responsibility is to accept requests for a resource and delegate the processing of that request to a Business Service Layer component. The Transactional boundary for the processing of a request is defined on the Action methods of the Resource Endpoints.![](./docs/img/play.gif)
+The Resource Endpoints responsibility is to accept requests for a resource and delegate the processing of that request to a Business Service Layer component. The Transactional boundary for the processing of a request is defined on the Action methods of the Resource Endpoints.
+
 
 ### 2.2 Business Service Layer ###
 
@@ -58,9 +63,23 @@ The Business Service layer services provide a [façade](https://en.wikipedia.org
 
 Each service operation should inherit from the ServiceOperation superclass, with any application "cross cutting" behaviour (e.g. application level authentication and authorization, audit, error handling) being managed by the ServiceOperation superclass. Comments have been included in this class as a placeholder for this logic to be included if required.
 
-### 2.3 Data Persistence Layer ###
 
-The Data Persistence layer provides the application persistence mechanism and its data model. This seed uses JPA with a Hibernate implementation to persist data to an in-memory H2 database. 
+### 2.3 Repository Layer ###
+
+The Repository is an abstraction layer, hiding details of any persistence mechanism from the applications business logic in the Business Service layer. This abstraction layer enables the persistence mechanism to be changed without having an effect on the Business layer. It also facilitates testing of the Business layer in isolation from the Persistence layer.
+
+This seed provides a basic example of a Repository implementation, the [ProjectJpaRepository](./svc/models/repository/jpa/ProjectJpaRespository.java), which persists to a Relational H2 database, using the JPA interface with a Hibernate implementation. 
+
+To change the persistence mechanism, a new implementation of the [Repository`<Project`>](./svc/models/services/project/ProjectRepository.java) needs to be created and injected into the Business layers service operations. To change the implementation of the Repository being injected into the Business Layer operations, amend the bindings defined in [RepositoriesModule](./svc/util/inject/play/RepositoriesModule.java).
+
+A Repository should be created for the "aggregate root" (i.e. the root object in the object graph) of an application feature or component. Defining the granularity of repositories is something that has to be carried out on a project by project basis. 
+
+E.g. If we have a feature called Manage Person Details, where a Person has an associated address, employment, income etc, then the aggregate root would be the object from which all these details can be accessed, which in this example would most likely be Person. A Repository`<Person>` interface would then be defined and used by the Business Layer to access Person and its associated data. A Repository`<Person>` implementation would be created for the required persistence mechanism. 
+
+
+### 2.4 Persistence Layer ###
+
+The Persistence layer provides the application persistence mechanism and its persistence model. This seed uses JPA with a Hibernate implementation to persist data to an in-memory H2 database. 
 
 #### 2.3.1 Configuration ####
 
