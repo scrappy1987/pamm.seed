@@ -1,7 +1,9 @@
 package controllers.resource.play;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import models.services.Service;
 import play.Logger;
+import play.db.jpa.Transactional;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -9,44 +11,65 @@ import play.mvc.Result;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class ResourceEndpoint extends Controller
+public abstract class ResourceEndpoint<T extends Service> extends Controller
 {
     private static final Logger.ALogger logger = Logger.of(ResourceEndpoint.class);
 
-    // GET {path}/resources?queryString
-    public Result search(String searchCriteria)
+    private T service;
+
+    protected ResourceEndpoint(T service)
     {
-        return TODO;
+        this.service = service;
     }
 
-    // GET {path}/resources/
-    public Result list()
+    // GET {path}/project
+    @Transactional public Result list()
     {
-        return TODO;
+        logger.info("Getting list of projects ");
+
+        JsonNode jsonResponse = service.list();
+
+        return ok(jsonResponse);
     }
 
-    // GET {path}/resources/:id
-    public Result find(Long id)
+    // GET {path}/project/:id
+    @Transactional public Result find(Long id)
     {
-        return TODO;
+        logger.info("Getting list of projects ");
+
+        JsonNode jsonResponse = service.find(getIdAsJson(id));
+
+        return ok(jsonResponse);
     }
 
-    // POST {path}/resources/ (json string sent as the data in the POST request)
-    public Result create()
+    // POST {path}/project
+    @Transactional public Result create()
     {
-        return TODO;
+        logger.info("In the create method of the ProjectController");
+
+        JsonNode jsonResponse = service.create(request().body().asJson());
+
+        return ok(jsonResponse);
     }
 
-    // PUT {path}/resources (json string sent as the data in the PUT request)
-    public Result update()
+    // PUT {path}/project
+    @Transactional public Result update()
     {
-        return TODO;
+        logger.info("In the create method of the ProjectController");
+
+        JsonNode jsonResponse = service.update(request().body().asJson());
+
+        return ok(jsonResponse);
     }
 
-    // DELETE {path}/resources/:id
-    public Result delete(Long id)
+    // DELETE {path}/project/:id
+    @Transactional public Result delete(Long id)
     {
-        return TODO;
+        logger.info("In the delete method of the ProjectController");
+
+        JsonNode jsonResponse = service.delete(getIdAsJson(id));
+
+        return ok(jsonResponse);
     }
 
     protected JsonNode getIdAsJson(Long id)
@@ -56,5 +79,10 @@ public abstract class ResourceEndpoint extends Controller
         idMap.put("id", id.toString());
 
         return Json.toJson(idMap);
+    }
+
+    protected T getService()
+    {
+        return service;
     }
 }
