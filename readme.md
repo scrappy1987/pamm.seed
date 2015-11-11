@@ -38,12 +38,14 @@ Index
 
 **[5. Running The Application](#RunningTheApplication)**
 
-1. Architecture<a name="Architecture"></a>
+<a name="Architecture"></a>
+1. Architecture
 ---------------
 
 The following diagram shows the high level reference architecture for the application: ![](./docs/img/pamm.gif)
 
-2. Play Component<a name="PlayComponent"></a>
+<a name="PlayComponent"></a>
+2. Play Component
 -----------------
 
 The Play component of the PAMM seed consists of the following layers:
@@ -104,13 +106,14 @@ c) build.sbt - include the dependencies for javaJpa and hibernate.
 
 Any entity specific queries should be placed in the Dao associated with that entity. E.g. If the ProjectEntity requires a database query not included in the Generic Dao classes, then a method for that database query should be added to the ProjectDao class.
 
-
-3. Angular Component<a name="AngularComponent"></a>
+<a name="AngularComponent"></a>
+3. Angular Component
 --------------------
 
 *In Development*
 
-4. Testing<a name="Testing"></a>
+<a name="Testing"></a>
+4. Testing
 ----------
 
 
@@ -287,7 +290,8 @@ This will invoke the Play unit tests as well as the Angular client unit tests.
 The PAMM seed folder structure adheres to the Play application convention, so in order for unit tests in the Play application to be invoked as part of the "sbt test" task, simply follow the instructions as detailed on the [Play Framework Testing page](https://www.playframework.com/documentation/2.4.3/JavaTest). 
 
 
-5. Running the Application<a name="RunningTheApplication"></a>
+<a name="RunningTheApplication"></a>
+5. Running the Application
 ----------
 
 Open a command window at the PAMM seed root folder and enter the following command
