@@ -14,7 +14,7 @@ PAMM-SEED is a template for building Web Applications using the PAMM stack:
 Index
 -----
 
-**1. Architecture**
+**[1. Architecture](#Architecture)**
 
 **2. Play Component**
 
@@ -38,7 +38,7 @@ Index
 
 **5. Running the application**
 
-1. Architecture
+1. Architecture<a name="Architecture"></a>
 ---------------
 
 The following diagram shows the high level reference architecture for the application: ![](./docs/img/pamm.gif)
