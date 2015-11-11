@@ -18,23 +18,18 @@ Index
 
 **[2. Play Component](#PlayComponent)**
 
-    1.  Http Layer
-
-    2.  Business Service Layer
-
-	3.  Repository Layer
-
-    4.  Persistence Layer
+- [Http Layer](#HttpLayer)
+- [Business Service Layer](#BusinessServiceLayer)
+- [Repository Layer](#RepositoryLayer)
+- [Persistence Layer](#PersistenceLayer)
 
 **[3. Angular Component](#AngularComponent)**
 
 **[4. Testing](#Testing)**
 
-    1.  Application End to End Testing
-
-    2.  Angular Client Unit Testing
-
-    3.  Play Unit Testing
+- [Application End to End Testing](#ApplicationEndToEndTesting)
+- [Angular Client Unit Testing](#AngularClientTesting)
+- [Play Unit Testing](#PlayUnitTesting)
 
 **[5. Running The Application](#RunningTheApplication)**
 
@@ -52,20 +47,21 @@ The Play component of the PAMM seed consists of the following layers:
 
 ![](./docs/img/play.gif)
 
+<a name="HttpLayer"></a>
 ### 2.1 Http Layer ###
 
 The Http layer exposes the applications RESTful API to clients, facilitated by the [Play framework routing mechanism](https://www.playframework.com/documentation/2.4.3/JavaRouting). Each resource endpoint exposes a RESTful API for a single application resource.
 
 The Resource Endpoints responsibility is to accept requests for a resource and delegate the processing of that request to a Business Service Layer component. The Transactional boundary for the processing of a request is defined on the Action methods of the Resource Endpoint. All resource endpoint implementations should extend the [ResourceEndpoint](./svc/app/controllers/resource/play/ResourceEndpoint.java) superclass. See [ProjectEndpoint](./svc/app/controllers/resource/play/ProjectsEndpoint.java) for a basic implementation.
 
-
+<a name="BusinessServiceLayer"></a>
 ### 2.2 Business Service Layer ###
 
 The Business Service layer services provide a [façade](https://en.wikipedia.org/wiki/Facade_pattern) style interface to a number of underlying service operations. Each service is an aggregation of service operations, with each service operation providing business logic to maintain application resources.
 
 Each service operation should inherit from the ServiceOperation superclass, with any application "cross cutting" behaviour (e.g. application level authentication and authorization, audit, error handling) being managed by the ServiceOperation superclass. Comments have been included in this class as a placeholder for this logic to be included if required.
 
-
+<a name="RepositoryLayer"></a>
 ### 2.3 Repository Layer ###
 
 The Repository is an abstraction layer, hiding details of any persistence mechanism from the applications business logic in the Business Service layer. This abstraction layer enables the persistence mechanism to be changed without having an effect on the Business layer. It also facilitates testing of the Business layer in isolation from the Persistence layer.
@@ -78,12 +74,12 @@ A Repository should be created for the "aggregate root" (i.e. the root object in
 
 E.g. If we have a feature called Manage Person Details, where a Person has an associated address, employment, income etc, then the aggregate root would be the object from which all these details can be accessed, which in this example would most likely be Person. A Repository`<Person>` interface would then be defined and used by the Business Layer to access Person and its associated data. A Repository`<Person>` implementation would be created for the required persistence mechanism. 
 
-
+<a name="PersistenceLayer"></a>
 ### 2.4 Persistence Layer ###
 
 The Persistence layer provides the application persistence mechanism and its persistence model. This seed uses JPA with a Hibernate implementation to persist data to an in-memory H2 database. 
 
-#### 2.3.1 Configuration ####
+#### 2.4.1 Configuration ####
 
 This requires the following configuration (already set up in the seed).
 
@@ -95,7 +91,7 @@ b) conf/META-INF/persistence.xml - Defines the persistence unit for the applicat
 
 c) build.sbt - include the dependencies for javaJpa and hibernate.
 
-#### 2.3.2 High Level Class Structure ####
+#### 2.4.2 High Level Class Structure ####
 ![](./docs/img/persistence.gif)
 
 *GenericReadOnlyDao*: Base class for all application Data access objects, providing methods to find, list and search for entities. An EntityManager instance is made available through the EntityManagerProvider factory class. This is obtained from the play.db.jpa.JPA.em() static method returning an entity manager instance for the currently running thread.
@@ -116,7 +112,7 @@ Any entity specific queries should be placed in the Dao associated with that ent
 4. Testing
 ----------
 
-
+<a name="ApplicationEndToEndTesting"></a>
 ### 4.1 Application End To End Testing ###
 
 For the Application End To End Testing, we are using the Protractor end to end testing framework along with the Cucumber BDD tool. 
@@ -204,6 +200,7 @@ The output from the Test run is written to the following folder under the PAMM s
 where CCYY-MM-DD-HH.mm.ss.SSS is the timestamp for the test run. Each test run will result in a new folder being created to store its test output. The Protractor test results are stored in the file protractorResults.log in the above folder.
 
 
+<a name="AngularClientUnitTesting"></a>
 ### 4.2 Angular Client Unit Testing ###
 
 For the unit testing of the Angular client components, Jasmine test framework libraries are used to create the test functions, with these tests being run by the karma test runner framework.
@@ -285,6 +282,7 @@ To run the karma tests open a command window at the project root and enter the f
 This will invoke the Play unit tests as well as the Angular client unit tests.
 
 
+<a name="PlayUnitTesting"></a>
 ### 4.3 Play Unit Testing ###
 
 The PAMM seed folder structure adheres to the Play application convention, so in order for unit tests in the Play application to be invoked as part of the "sbt test" task, simply follow the instructions as detailed on the [Play Framework Testing page](https://www.playframework.com/documentation/2.4.3/JavaTest). 
