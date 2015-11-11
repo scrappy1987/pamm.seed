@@ -28,7 +28,7 @@ Index
 **[4. Testing](#Testing)**
 
 - [Application End to End Testing](#ApplicationEndToEndTesting)
-- [Angular Client Unit Testing](#AngularClientTesting)
+- [Angular Client Unit Testing](#AngularClientUnitTesting)
 - [Play Unit Testing](#PlayUnitTesting)
 
 **[5. Running The Application](#RunningTheApplication)**
