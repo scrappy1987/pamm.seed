@@ -2,13 +2,18 @@
 (function () {
 
     var app = angular.module("app", ["ui.router", "dal", "securityManager", "repository", "util"]).run(
-        function ($window, $rootScope, $log) {
+        function ($window, $rootScope, $log, $location) {
             $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                // override navigation here (e.g. prevent back button
-                // Add security check here if necessary
+                if(fromState.url.indexOf("/") > -1)
+                {
+                    if(fromState.url !== $location.url())
+                    {
+                        event.preventDefault();
+                    }
+                }
             });
 
-            // store constants in root scope so that child compoents can access it
+
             $rootScope.$$errorText = $$errorText;
             $rootScope.$$dataType = $$dataType;
 

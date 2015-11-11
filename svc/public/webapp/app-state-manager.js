@@ -31,6 +31,7 @@
                     templateUrl: "feature/home/home-index.html"
                 }
             }
+
         }).state("home.dashboard", {
             url: "/dashboard",
             views: {
