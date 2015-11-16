@@ -25,6 +25,12 @@ Index
 
 **[3. Angular Component](#AngularComponent)**
 
+- [View Layer](#ViewLayer)
+- [Controller Layer](#ControllerLayer)
+- [Repository Layer](#AngularRepoLayer)
+- [Data Access Layer](#DAL)
+- [Navigation](#Navigation)
+
 **[4. Testing](#Testing)**
 
 - [Application End to End Testing](#ApplicationEndToEndTesting)
@@ -106,7 +112,44 @@ Any entity specific queries should be placed in the Dao associated with that ent
 3. Angular Component
 --------------------
 
-*In Development*
+The Angular component of the PAMM seed has been developed in accordance with the Angular team endorsed [Style and Development guidlines.](https://github.com/johnpapa/angular-styleguide#controllers)
+
+For tutorials and an overview of the Angular framework see the [Angular Developer Guide](https://docs.angularjs.org/guide) website.
+
+The following is the high level structure of the Angular component of the PAMM seed.
+
+![](./docs/img/angular.gif)
+
+
+<a name="ViewLayer"></a>
+### 3.1 View Layer ###
+
+The folder structure of the angular application is organised by application feature as recommended in the [Application structure section](https://github.com/johnpapa/angular-styleguide#application-structure) of the Angular Style and Development Guide.
+
+Each feature folder contains one or more HTML partial(s) defining how the feature will be presented to the user, a .less file containing the CSS for styling this feature, and one or more javascript files defining the controller(s) for the feature.
+
+Each HTML partial has a reference to the Controller that will provide the view with its data (viewModel), with the controller being referenced from the view according to the best practices defined in the [Angular Style and Development Guide](https://github.com/johnpapa/angular-styleguide#controllers). 
+
+
+<a name="ControllerLayer"></a>
+### 3.2 Controller Layer ###
+
+*In progress*
+
+<a name="AngularRepoLayer"></a>
+### 3.3 Repository Layer ###
+
+*In progress*
+
+<a name="DAL"></a>
+### 3.4 Data Access Layer ###
+
+*In progress*
+
+<a name="Navigation"></a>
+### 3.5 Navigation ###
+
+*In progress*
 
 <a name="Testing"></a>
 4. Testing
