@@ -29,6 +29,7 @@ Index
 - [Controller Layer](#ControllerLayer)
 - [Repository Layer](#AngularRepoLayer)
 - [Data Access Layer](#DAL)
+- [Configuration](#Configuration)
 - [Navigation](#Navigation)
 
 **[4. Testing](#Testing)**
@@ -134,22 +135,66 @@ Each HTML partial has a reference to the Controller that will provide the view w
 <a name="ControllerLayer"></a>
 ### 3.2 Controller Layer ###
 
-*In progress*
+The responsibility of each Controller is to provide data to its associated view, and to interpret events from that view and delegate the processing of those events to the appropriate repository service.  
+
+Each controller is wrapped in an [Immediately Invoked Function Expression](https://github.com/johnpapa/angular-styleguide#iife), so that the Angular components are defined outside of the Global scope. The Angular Style and Development Guide provides [guidelines](https://github.com/johnpapa/angular-styleguide#controllers) for the declaration of Controllers, and recommendations for structuring code in a Controller. These guidelines have been used in the development of the PAMM seed Controllers. 
+
 
 <a name="AngularRepoLayer"></a>
 ### 3.3 Repository Layer ###
 
-*In progress*
+The Repository Layer is a cache for data gathered from the server side Play application. It is a stateful service mediating between the controller layer and the data access layer. 
+
+The repository service is wrapped in an [Immediately Invoked Function Expression](https://github.com/johnpapa/angular-styleguide#iife), so that the repository service is defined outside of the Global scope. 
+
+The [Angular decorator mechanism](https://docs.angularjs.org/api/ng/type/angular.Module) is used to add functionality to the core repository implementation for each of the application features. This is demonstrated in the [project.js](./svc/public/webapp/service/repository/project.js) file, where the core repository implementation defined in [repository.js](./svc/public/webapp/service/repository/repository.js) is decorated with functions to manage project specific data.
+
+**Note**: This mechanism for adding functionality to the core repository implementation can lead to issues if multiple decorators both add the same named function to the repository. In this instance, the function in the decorator defined last in the index.html file would take precedence.
+
+
+E.g. If we have projects.js and users.js which both decorate repository.js with the same function save(), then if users.js was listed in the index.html file after projects.js, the save() function defined in projects.js would never be invoked, effectively hidden by the implementation of save() in users.js.
+
 
 <a name="DAL"></a>
 ### 3.4 Data Access Layer ###
 
-*In progress*
+The Data Access Layer (DAL) is a stateless service providing access to the RESTful API exposed by the Play application.
+
+The DAL should only be accessed from the Repository layer, with the Controllers requesting their data from the Repository instead of accessing the DAL directly.
+
+The DAL employs the promise mechanism to avoid blocking the serving thread while waiting for an HTTP response. This means that any calls to the DAL will also return a promise. All HTTP calls initiated from the DAL layer should be routed through the [service-caller.js](./svc/public/webapp/service/dal/dal.js) component.
+
+Like the Repository layer, The [Angular decorator mechanism](https://docs.angularjs.org/api/ng/type/angular.Module) is used to add functionality to the core data access component implementation for each of the application features. This is demonstrated in the [project.js](./svc/public/webapp/service/dal/project.js) file, where the core data access component implementation defined in [dal.js](./svc/public/webapp/service/util/service-caller.js) is decorated with functions to manage project specific data.
+
+**Note**: Again, like with the repository, this mechanism for adding functionality to the core data access component implementation can lead to issues if multiple decorators both add the same named function to the data access component. In this instance, the function in the decorator defined last in the index.html file would take precedence.
+
+
+<a name="Configuration"></a>
+### 3.5 Configuration ###
+
+There are 2 configuration points in the Angular component. The first is in [app.js](./svc/public/webapp/app.js) to define an interceptor to apply a standard authentication mechanism to each HTTP request triggered from the DAL layer.
+
+The second configuration point is the [app-state-manager.js](./svc/public/webapp/app-state-manager.js) to define the applications navigation model based on application states.
+
+The [Angular Style and Development Guide](https://github.com/johnpapa/angular-styleguide#startup-logic) provides guidelines on what functionality should be included in the application configuration phase
+
 
 <a name="Navigation"></a>
-### 3.5 Navigation ###
+### 3.6 Navigation ###
 
-*In progress*
+The navigation mechanism chosen for the Angular component is provided by the [UI-Router](https://github.com/angular-ui/ui-router/wiki) library. The navigation is based on application state, with each state being associated with a view template, view properties and optionally a controller (for this implementation the controllers are defined in the view templates).
+
+The states are hierarchical and the template for a child state will be "slotted" into the template associated with its parent state. The [app-state-manager.js](./svc/public/webapp/app-state-manager.js) file defines the following states:
+
+		home
+		
+		home.dashboard
+		
+		home.project
+		
+		home.projectadd
+
+The template associated with the home state will be slotted into the [index.html](./svc/public/webapp/index.html) page where the data-ui-view directive is specified, while the templates associated with the child states (dashboard, project and projectadd) will be slotted into the data-ui-view directive in the [home-index.html](./svc/public/webapp/feature/home-index.html) partial)
 
 <a name="Testing"></a>
 4. Testing
