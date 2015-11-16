@@ -113,7 +113,7 @@ Any entity specific queries should be placed in the Dao associated with that ent
 3. Angular Component
 --------------------
 
-The Angular component of the PAMM seed has been developed in accordance with the Angular team endorsed [Style and Development guidlines.](https://github.com/johnpapa/angular-styleguide#controllers)
+The Angular component of the PAMM seed has been developed in accordance with the Angular team endorsed [Style and Development guidlines.](https://github.com/johnpapa/angular-styleguide)
 
 For tutorials and an overview of the Angular framework see the [Angular Developer Guide](https://docs.angularjs.org/guide) website.
 
@@ -194,7 +194,7 @@ The states are hierarchical and the template for a child state will be "slotted"
 		
 		home.projectadd
 
-The template associated with the home state will be slotted into the [index.html](./svc/public/webapp/index.html) page where the data-ui-view directive is specified, while the templates associated with the child states (dashboard, project and projectadd) will be slotted into the data-ui-view directive in the [home-index.html](./svc/public/webapp/feature/home-index.html) partial)
+The template associated with the home state will be slotted into the [index.html](./svc/public/webapp/index.html) page where the data-ui-view directive is specified, while the templates associated with the child states (dashboard, project and projectadd) will be slotted into the data-ui-view directive in the [home-index.html](./svc/public/webapp/feature/home/home-index.html) partial)
 
 <a name="Testing"></a>
 4. Testing
