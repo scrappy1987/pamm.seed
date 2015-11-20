@@ -13,6 +13,9 @@ POST        /project        controllers.resource.play.ProjectsEndpoint.create()
 PUT         /project        controllers.resource.play.ProjectsEndpoint.update()
 DELETE      /project/:id    controllers.resource.play.ProjectsEndpoint.delete(id: Long)
 
+GET         /sse-connection/:id    controllers.resource.play.SSEEndpoint.createSSEConnection(id: String)
+POST        /sse-request           controllers.resource.play.SSEEndpoint.createSSEExampleRequest()
+
 
 #STATIC CONTENT
 
