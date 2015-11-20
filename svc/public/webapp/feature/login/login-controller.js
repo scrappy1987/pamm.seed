@@ -6,7 +6,7 @@
      */
     angular.module("app")
         .controller("loginController",
-        ["$state", "$log", "$window", "securityManager", "sseConnectionManager", LoginCtrl]);
+        ["$state", "$log", "$window", "securityManager", "sseConnectionManager",  LoginCtrl]);
 
     function LoginCtrl($state, $log, $window, securityManager, sseConnectionManager) {
         var vm = this;

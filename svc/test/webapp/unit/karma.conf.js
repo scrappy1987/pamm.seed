@@ -33,6 +33,7 @@ module.exports = function (config) {
             <!-- Mocks-->
             "test/webapp/mock-webapp/service/security/security-manager.js",
             "test/webapp/mock-webapp/service/security/auth-interceptor.js",
+            "test/webapp/mock-webapp/service/sse/sseConnectionManager.js",
             "test/webapp/mock-webapp/service/dal/dal.js",
             "test/webapp/mock-webapp/service/dal/project.js",
             "test/webapp/unit/app.js",
@@ -67,7 +68,7 @@ module.exports = function (config) {
 
         coverageReporter: {
             type: 'html',
-            dir: 'webapp/unit/reports/karma/coverage/'
+            dir: 'test/webapp/unit/reports/karma/coverage/'
         },
 
         // Continuous Integration mode

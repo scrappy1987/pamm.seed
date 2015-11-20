@@ -1,7 +1,7 @@
 "use strict";
 (function () {
 
-    var app = angular.module("app", ["ui.router", "dal", "securityManager", "repository", "util"]).run(
+    var app = angular.module("app", ["ui.router", "dal", "securityManager", "repository", "util", "sse"]).run(
         function ($window, $rootScope, $log) {
             console.log("test");
             console.log(fromState);

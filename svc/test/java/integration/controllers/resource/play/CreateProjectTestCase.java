@@ -17,15 +17,10 @@ public class CreateProjectTestCase extends EndpointTestCase
     @Override protected void test()
     {
         Http.RequestBuilder postRequest = new Http.RequestBuilder().method("POST").bodyJson(getJsonRequest())
-                .uri("/project");
+            .uri("/project");
         Result postResult = route(postRequest);
         String projects = Helpers.contentAsString(postResult);
         System.out.println("Projects returned POST " + projects);
-
-        Http.RequestBuilder getRequest = new Http.RequestBuilder().method("GET").uri("/project");
-        Result getResult = route(getRequest);
-        projects = Helpers.contentAsString(getResult);
-        System.out.println("Projects returned GET " + projects);
     }
 
     private JsonNode getJsonRequest()

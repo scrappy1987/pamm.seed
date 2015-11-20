@@ -6,6 +6,7 @@ describe('Login-controller spec', function() {
     var $state, securityManager;
     var $q, deferred, response;
     var scope;
+    var sseConnectionManager;
 
     //To jasmine test promises, use the below example.
     var promise = function(response, resolved) {
@@ -19,13 +20,14 @@ describe('Login-controller spec', function() {
         return deferred.promise;
     };
 
-    beforeEach(inject(function($rootScope, _$controller_, _$state_, _securityManager_, _$q_) {
+    beforeEach(inject(function($rootScope, _$controller_, _$state_, _securityManager_, _sseConnectionManager_, _$q_) {
         $q = _$q_;
         scope = $rootScope.$new();
         $state = _$state_;
         securityManager = _securityManager_;
+        sseConnectionManager = _sseConnectionManager_;
         $controller = _$controller_;
-        controller = $controller('loginController as loginCtrl', { $scope: scope, $state: $state, securityManager: securityManager});
+        controller = $controller('loginController as loginCtrl', { $scope: scope, $state: $state, securityManager: securityManager, sseConnectionManager: sseConnectionManager });
     }));
 
     describe('Login method', function() {

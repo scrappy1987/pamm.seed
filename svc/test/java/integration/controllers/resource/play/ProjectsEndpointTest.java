@@ -8,14 +8,14 @@ import static play.test.Helpers.inMemoryDatabase;
 
 public class ProjectsEndpointTest extends EndpointTest
 {
-    @Test public void testGetProjects()
+    @Test public void testCreateProjects()
     {
         EndpointTestCase testCase = new CreateProjectTestCase();
 
         runEndpointTest(testCase, inMemoryDatabase());
     }
 
-    @Test public void testGetProjects2()
+    @Test public void testGetProjects()
     {
         EndpointTestCase testCase = new GetProjectTestCase();
 
