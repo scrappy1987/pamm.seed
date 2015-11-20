@@ -6,20 +6,25 @@
      */
     angular.module('app')
         .controller("projectController",
-        ["$log", "repository", ProjectCtrl]);
+        ["$log", "$scope", "repository", ProjectCtrl]);
 
-    function ProjectCtrl($log, repository) {
+    function ProjectCtrl($log, $scope, repository ) {
         var vm = this;
-        // Constant - for trace and debug
+
         vm.controllerName = "projectController";
 
-        // init get all user projects
         repository.getProject().then(function (results) {
-            $log.debug("Retrieving projects from repository");
-            vm.projects = results;
-        }, function (error) {
-            vm.error = true;
-            vm.errorMessage = error;
-        });
+             vm.projects = results;
+         }, function (error) {
+             vm.error = true;
+             vm.errorMessage = error;
+         });
+
+         $scope.$on('new-work-item', function(event, data) {
+            vm.sseproject = JSON.parse(data);
+            delete vm.sseproject.username;
+            vm.projects.push(vm.sseproject);
+            $scope.$apply();
+         });
     }
 }());

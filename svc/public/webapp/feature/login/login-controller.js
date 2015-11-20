@@ -6,9 +6,9 @@
      */
     angular.module("app")
         .controller("loginController",
-        ["$state", "$log", "$window", "securityManager", LoginCtrl]);
+        ["$state", "$log", "$window", "securityManager", "sseConnectionManager", LoginCtrl]);
 
-    function LoginCtrl($state, $log, $window, securityManager) {
+    function LoginCtrl($state, $log, $window, securityManager, sseConnectionManager) {
         var vm = this;
 
         vm.hasValidationError = false;
@@ -27,6 +27,7 @@
             vm.hasValidationError = false;
             vm.hasAuthenticationError = false;
             vm.credentials = {username: vm.username, password: vm.password};
+            sseConnectionManager.createConnection(vm.username);
             securityManager.login(vm.credentials).then(function (result) {
                     $window.sessionStorage.token = result.token;
                     $state.go("home.dashboard");
