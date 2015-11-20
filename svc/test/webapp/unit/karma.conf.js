@@ -2,7 +2,7 @@ module.exports = function (config) {
     config.set({
         frameworks: ['jasmine'],
 
-        basePath: '../../',
+        basePath: '../../../',
 
         preprocessors: {
             "public/webapp/feature/**/*.js": ['coverage'],
@@ -22,7 +22,7 @@ module.exports = function (config) {
             "public/webapp/lib/bootstrap3-dialog/js/bootstrap-dialog.min.js",
 
             <!-- Test Libraries (note angular-mocks.js needs to be loaded after real angular) -->
-            "test/unit/lib/angular-1.4.4/angular-mocks.js",
+            "test/webapp/unit/lib/angular-1.4.4/angular-mocks.js",
 
             <!-- app dependencies required to run tests-->
             "public/webapp/service/repository/repository.js",
@@ -31,17 +31,17 @@ module.exports = function (config) {
             "public/webapp/constant/*.js",
 
             <!-- Mocks-->
-            "test/mock-webapp/service/security/security-manager.js",
-            "test/mock-webapp/service/security/auth-interceptor.js",
-            "test/mock-webapp/service/dal/dal.js",
-            "test/mock-webapp/service/dal/project.js",
-            "test/unit/app.js",
+            "test/webapp/mock-webapp/service/security/security-manager.js",
+            "test/webapp/mock-webapp/service/security/auth-interceptor.js",
+            "test/webapp/mock-webapp/service/dal/dal.js",
+            "test/webapp/mock-webapp/service/dal/project.js",
+            "test/webapp/unit/app.js",
 
             <!-- Features being tested -->
             {pattern: 'public/webapp/feature/**/*.js'},
             {pattern: 'public/webapp/service/**/*.js'},
-            {pattern: 'test/unit/feature/**/*.spec.js'},
-            {pattern: 'test/unit/service/**/*.spec.js'}
+            {pattern: 'test/webapp/unit/feature/**/*.spec.js'},
+            {pattern: 'test/webapp/unit/service/**/*.spec.js'}
 
         ],
         // list of files to exclude
@@ -67,7 +67,7 @@ module.exports = function (config) {
 
         coverageReporter: {
             type: 'html',
-            dir: 'test/unit/reports/karma/coverage/'
+            dir: 'webapp/unit/reports/karma/coverage/'
         },
 
         // Continuous Integration mode

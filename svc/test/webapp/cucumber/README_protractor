@@ -110,7 +110,7 @@ The svc application should now be running on port 9000.
 
 From the PAMM seed root directory run the following command
 
-        protractor svc\test\cucumber\conf.js
+        protractor svc\test\webapp\cucumber\conf.js
 
 This will now invoke the tests configured in the cucumberOpts "require" property of the conf.js file 
 

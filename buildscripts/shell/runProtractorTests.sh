@@ -1,1 +1,1 @@
-protractor svc/testcucumber/conf.js
+protractor svc/test/webapp/cucumber/conf.js

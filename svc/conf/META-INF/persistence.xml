@@ -11,4 +11,12 @@
         </properties>
     </persistence-unit>
 
+    <persistence-unit name="testPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <non-jta-data-source>testDS</non-jta-data-source>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+        </properties>
+    </persistence-unit>
+
 </persistence>

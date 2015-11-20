@@ -5,7 +5,7 @@ object ClientTestTask extends Build {
   lazy val clientTest = taskKey[Int]("clientTest")
 
   def clientTestTask = {
-    "./node_modules/.bin/karma.cmd start ./svc/test/unit/karma.conf.js" !
+    "./node_modules/.bin/karma.cmd start ./svc/test/webapp/unit/karma.conf.js" !
   }
 
   def customTestTask = Def.taskDyn {

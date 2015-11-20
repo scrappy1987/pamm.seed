@@ -2,9 +2,9 @@
   "name": "protractor-cucumber-PAMM",
   "version": "0.1.0",
   "scripts": {
-    "protractor-test": "./node_modules/.bin/protractor svc/test/cucumber/conf.js",
-    "e2etest": "./node_modules/.bin/protractor svc/test/e2e/conf.js",
-    "jasmine-test": "./node_modules/.bin/karma start svc/test/unit/karma.conf.js",
+    "protractor-test": "./node_modules/.bin/protractor svc/test/webapp/cucumber/conf.js",
+    "e2etest": "./node_modules/.bin/protractor svc/test/webapp/e2e/conf.js",
+    "jasmine-test": "./node_modules/.bin/karma start svc/test/webapp/unit/karma.conf.js",
     "selenium-start": "webdriver-manager start",
     "selenium-stop": "webdriver-manager stop"
   },

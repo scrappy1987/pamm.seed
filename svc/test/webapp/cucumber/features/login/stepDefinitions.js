@@ -1,6 +1,6 @@
 // Do login for each test
 
-var LoginPage = require("../page-models/login.page.js");
+var LoginPage = require("../../page-models/login.page.js");
 var assert = require('assert');
 
 module.exports = function () {

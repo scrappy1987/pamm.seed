@@ -210,13 +210,13 @@ Protractor (and our end to end test scripts) run on a node.js server and communi
 
 #### 4.1.1 Prerequisites ####
 
-Modules required to run the Protractor end to end tests are specified in the [Protractor readMe file](svc/test/cucumber/README_protractor)
+Modules required to run the Protractor end to end tests are specified in the [Protractor readMe file](svc/test/webapp/cucumber/README_protractor)
 
 #### 4.1.2 Test Configuration ####
 
 The following files have been configured to run the Protractor end to end tests for the seed:
 
-**[Protractor conf.js file](svc/test/cucumber/conf.js)**
+**[Protractor conf.js file](svc/test/webapp/cucumber/conf.js)**
 
 The following link provides a comprehensive list of properties that can be set for your [Protractor configuration](https://github.com/angular/protractor/blob/master/docs/referenceConf.js), and descriptions of how to use these properties.
 
@@ -230,23 +230,23 @@ The following link provides a comprehensive list of properties that can be set f
 
 Each feature being tested will have the following fileset located under the following base folder
 
-		svc/test/cucumber/features/
+		svc/test/webapp/cucumber/features/
 
 
-- A Gherkin feature file defining the Feature to be tested and the test scenarios for the feature. See the [manage-project.feature](svc/test/cucumber/features/manage-project/manage-project.feature) for an example feature file.
+- A Gherkin feature file defining the Feature to be tested and the test scenarios for the feature. See the [manage-project.feature](svc/test/webapp/cucumber/features/manage-project/manage-project.feature) for an example feature file.
 
 
-- A cucumber script implementing the steps defined in the Gherkin feature file, to test the scenarios in the Gherkin feature file. See the [manage-project step definition](svc/test/cucumber/features/manage-project/stepDefinitions.js) for an example cucumber step definition script.
+- A cucumber script implementing the steps defined in the Gherkin feature file, to test the scenarios in the Gherkin feature file. See the [manage-project step definition](svc/test/webapp/cucumber/features/manage-project/stepDefinitions.js) for an example cucumber step definition script.
  
 
-- Page Object script(s), encapsulating the user interface actions required by the cucumber scripts in order to implement the scenarios defined in the Gherkin feature file.  See the [manage-project page model](svc/test/cucumber/features/page-models/manage-project.page.js) for an example page model.
+- Page Object script(s), encapsulating the user interface actions required by the cucumber scripts in order to implement the scenarios defined in the Gherkin feature file.  See the [manage-project page model](svc/test/webapp/cucumber/page-models/manage-project.page.js) for an example page model.
 
 
 Scenarios that require data setup, should make use of the testsetup child project included in the seed. This is a Play application exposing a RESTful API for the execution of SQL scripts. To invoke a SQL script through the testsetup application, cucumber scripts should invoke the executeScript(scriptNumber) function of the following script. 
 
-		svc/test/cucumber/features/util/setup-service-caller.js
+		svc/test/webapp/cucumber/util/setup-service-caller.js
 
-See the call to setup.executeScript(1) in the  [manage-project step definition](svc/test/cucumber/features/manage-project/stepDefinitions.js) for an example.  
+See the call to setup.executeScript(1) in the  [manage-project step definition](svc/test/webapp/cucumber/features/manage-project/stepDefinitions.js) for an example.  
 
 The SQL scripts to set up test data should be placed in the following directory of the testsetup child project
 
@@ -265,7 +265,7 @@ Enter the following command
 
 	npm run protractor-test
 
-This will invoke the protractor-test "event" in the [package.json](./package.json) file, which runs the command "./node_modules/.bin/protractor svc/test/cucumber/conf.js"
+This will invoke the protractor-test "event" in the [package.json](./package.json) file, which runs the command "./node_modules/.bin/protractor svc/test/webapp/cucumber/conf.js"
 
 This will output the Gherkin style scenario description for each scenario run, and display which tests have passed or failed. 
 
@@ -295,14 +295,14 @@ For the unit testing of the Angular client components, Jasmine test framework li
 
 #### 4.2.1 Prerequisites ####
 
-Modules that are required to run the jasmine unit tests with the karma test runner framework are specified in the [Karma readMe file](svc/test/unit/README_karma).
+Modules that are required to run the jasmine unit tests with the karma test runner framework are specified in the [Karma readMe file](svc/test/webapp/unit/README_karma).
 
 
 #### 4.2.2 Test Configuration ####
 
 The following files have been configured to invoke the karma test runner to execute the jasmine unit tests:
 
-**[karma.conf.js:](svc/test/unit/karma.conf.js)**
+**[karma.conf.js:](svc/test/webapp/unit/karma.conf.js)**
 
 The following link provides a comprehensive list of properties that can be set for your [Karma configuration](http://karma-runner.github.io/0.13/config/configuration-file.html), and descriptions of how to use these properties.
 
@@ -322,7 +322,7 @@ For each javascript component that we unit test within the folder
 
 a corresponding jasmine unit test component has been created in an identically named folder hierarchy within the folder
 
-		svc/test/unit 
+		svc/test/webapp/unit 
 
 e.g. in order to test the component
 
@@ -330,16 +330,16 @@ e.g. in order to test the component
 
 we would create the following jasmine test script 
 
-		svc/test/unit/feature/login/login-controller.spec.js 
+		svc/test/webapp/unit/feature/login/login-controller.spec.js 
 
 and html file
 
-		svc/test/unit/feature/login/login-controller.test.html 
+		svc/test/webapp/unit/feature/login/login-controller.test.html 
 
 
 Each test has an html file defining the dependencies required to run the individual tests and a javascript file containing the jasmine unit test scripts to be executed.
 
-See [login-controller.test.html](svc/test/unit/feature/login/login-controller.test.html) for an example of an html file defining the test dependencies, and [login-controller.spec.js](svc/test/unit/feature/login/login-controller.spec.js) for example jasmine test scripts.
+See [login-controller.test.html](svc/test/webapp/unit/feature/login/login-controller.test.html) for an example of an html file defining the test dependencies, and [login-controller.spec.js](svc/test/webapp/unit/feature/login/login-controller.spec.js) for example jasmine test scripts.
 
 
 #### 4.2.4 Test Execution ####
@@ -353,7 +353,7 @@ Enter the following command
 
      npm run jasmine-test
 
-This will invoke the test "event" in the [package.json](./package.json) file, which runs the command "./node_modules/.bin/karma start svc/test/unit/karma.conf.js"
+This will invoke the test "event" in the [package.json](./package.json) file, which runs the command "./node_modules/.bin/karma start svc/test/webapp/unit/karma.conf.js"
 
 Any unsuccessful tests will be displayed on the command window, with details of the test that failed and the name of the jasmine file. 
 
@@ -373,7 +373,7 @@ This will invoke the Play unit tests as well as the Angular client unit tests.
 <a name="PlayUnitTesting"></a>
 ### 4.3 Play Unit Testing ###
 
-The PAMM seed folder structure adheres to the Play application convention, so in order for unit tests in the Play application to be invoked as part of the "sbt test" task, simply follow the instructions as detailed on the [Play Framework Testing page](https://www.playframework.com/documentation/2.4.3/JavaTest). 
+The PAMM seed folder structure adheres to the Play application convention, so in order for unit tests in the Play application to be invoked as part of the "sbt test" task, simply follow the instructions as detailed on the [Play Framework Testing page](https://www.playframework.com/documentation/2.4.3/JavaTest). The [JSONHelperTest.java](svc/test/util/json/play/JSONHelperTest.java) provides a simple example of a Junit test.
 
 
 <a name="RunningTheApplication"></a>

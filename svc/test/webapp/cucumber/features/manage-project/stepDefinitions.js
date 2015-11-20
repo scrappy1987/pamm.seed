@@ -1,6 +1,6 @@
-var ManageProjects = require("../page-models/manage-project.page.js");
-var NavBar = require("../page-models/navigation-bar.page.js");
-var SetupServiceCaller = require("../util/setup-service-caller.js");
+var ManageProjects = require("../../page-models/manage-project.page.js");
+var NavBar = require("../../page-models/navigation-bar.page.js");
+var SetupServiceCaller = require("../../util/setup-service-caller.js");
 var assert = require('assert');
 
 module.exports = function () {
