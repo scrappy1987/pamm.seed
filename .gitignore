@@ -5,11 +5,12 @@ node_modules
 project/target
 svc/logs
 svc/target/
-svc/test/unit/test-results.xml
-svc/test/unit/reports
-svc/test/unit/node_modules
-svc/test/cucumber/node_modules
-svc/test/e2e/node_modules
+svc/test/webapp/unit/test-results.xml
+svc/test/webapp/unit/reports
+svc/test/webapp/unit/node_modules
+svc/test/webapp/cucumber/node_modules
+svc/test/webapp/e2e/node_modules
+svc/test/java/integration/logs
 target/
 testsetup/logs
 testsetup/target
