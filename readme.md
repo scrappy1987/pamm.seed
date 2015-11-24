@@ -373,7 +373,7 @@ This will invoke the Play unit tests as well as the Angular client unit tests.
 <a name="PlayUnitTesting"></a>
 ### 4.3 Play Unit Testing ###
 
-The PAMM seed folder structure adheres to the Play application convention, so in order for unit tests in the Play application to be invoked as part of the "sbt test" task, simply follow the instructions as detailed on the [Play Framework Testing page](https://www.playframework.com/documentation/2.4.3/JavaTest). The [JSONHelperTest.java](svc/test/unit/util/json/play/JSONHelperTest.java) provides a simple example of a Junit test.
+The PAMM seed folder structure adheres to the Play application convention, so in order for unit tests in the Play application to be invoked as part of the "sbt test" task, simply follow the instructions as detailed on the [Play Framework Testing page](https://www.playframework.com/documentation/2.4.3/JavaTest). The [JSONHelperTest.java](svc/test/java/unit/util/json/play/JSONHelperTest.java) provides a simple example of a Junit test.
 
 
 <a name="RunningTheApplication"></a>
