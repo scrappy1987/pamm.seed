@@ -8,9 +8,7 @@ module.exports = (function () {
     }
 
     LoginPage.prototype.visitPage = function () {
-        console.log("Getting Login Page");
         var url = browser.get("/");
-        console.log("Got Login Page");
         return url;
     };
 

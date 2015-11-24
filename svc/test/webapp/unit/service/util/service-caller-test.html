@@ -16,8 +16,8 @@
 
 
     <!-- Test Libraries (note angular-mocks.js needs to be loaded after real angular) -->
-    <link rel="shortcut icon" type="image/png" href="test/unit/lib/jasmine-2.3.4/jasmine_favicon.png">
-    <link rel="stylesheet" type="text/css" href="test/unit/lib/jasmine-2.3.4/jasmine.css">
+    <link rel="shortcut icon" type="image/png" href="test/webapp/unit/lib/jasmine-2.3.4/jasmine_favicon.png">
+    <link rel="stylesheet" type="text/css" href="test/webapp/unit/lib/jasmine-2.3.4/jasmine.css">
     <script src="test/webapp/unit/lib/jasmine-2.3.4/jasmine.js"></script>
     <script src="test/webapp/unit/lib/jasmine-2.3.4/jasmine-html.js"></script>
     <script src="test/webapp/unit/lib/jasmine-2.3.4/boot.js"></script>
@@ -31,6 +31,7 @@
     <script src="public/webapp/service/dal/dal.js"></script>
     <script src="public/webapp/service/repository/repository.js"></script>
     <script src="public/webapp/service/repository/project.js"></script>
+    <script src="public/webapp/service/sse/sseConnectionManager.js"></script>
 
     <script src="test/webapp/unit/app.js"></script>
 
@@ -38,8 +39,8 @@
     <script src="public/webapp/service/util/service-caller.js"></script>
 
     <!-- Mocks-->
-    <script src="test/webapp/mock-webapp/service/security/security-manager.js"></script>
-    <script src="test/mock-webapp/service/security/auth-interceptor.js"></script>
+    <script src="test/webapp/mocks/service/security/security-manager.js"></script>
+    <script src="test/mocks/service/security/auth-interceptor.js"></script>
 
     <!--tests-->
     <script src="test/webapp/unit/service/util/service-caller.spec.js"></script>

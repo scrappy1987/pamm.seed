@@ -28,18 +28,6 @@ describe("When user selects sample from the navbar", function () {
         expect(browser.getCurrentUrl()).toMatch("/project/add");
     });
 
-
-    it('Should navigate to add project and add given item - three items are already populated in database prior', function() {
-        setup.executeScript(3);
-        navbar.navigateToAddProject();
-        addProject.addProject("mock title", "mock summary", "mock info");
-        addProject.closeModal('button-close');
-        expect(browser.getCurrentUrl()).toMatch("/project");
-        var todoList = element.all(by.repeater('project in projectCtrl.projects'));
-        expect(todoList.count()).toEqual(4);
-    });
-
-
      it('Should navigate to add project and add given item - no items are populated in database prior', function() {
          setup.executeScript(2);
          navbar.navigateToAddProject();
