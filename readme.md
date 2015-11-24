@@ -210,13 +210,13 @@ Protractor (and our end to end test scripts) run on a node.js server and communi
 
 #### 4.1.1 Prerequisites ####
 
-Modules required to run the Protractor end to end tests are specified in the [Protractor readMe file](svc/test/webapp/cucumber/README_protractor)
+Modules required to run the Protractor end to end tests are specified in the [Protractor readMe file](svc/test/webapp/e2e_tests/README_protractor)
 
 #### 4.1.2 Test Configuration ####
 
 The following files have been configured to run the Protractor end to end tests for the seed:
 
-**[Protractor conf.js file](svc/test/webapp/cucumber/conf.js)**
+**[Protractor conf.js file](svc/test/webapp/e2e_tests/conf.js)**
 
 The following link provides a comprehensive list of properties that can be set for your [Protractor configuration](https://github.com/angular/protractor/blob/master/docs/referenceConf.js), and descriptions of how to use these properties.
 
@@ -230,23 +230,23 @@ The following link provides a comprehensive list of properties that can be set f
 
 Each feature being tested will have the following fileset located under the following base folder
 
-		svc/test/webapp/cucumber/features/
+		svc/test/webapp/e2e_tests/features/
 
 
-- A Gherkin feature file defining the Feature to be tested and the test scenarios for the feature. See the [manage-project.feature](svc/test/webapp/cucumber/features/manage-project/manage-project.feature) for an example feature file.
+- A Gherkin feature file defining the Feature to be tested and the test scenarios for the feature. See the [manage-project.feature](svc/test/webapp/e2e_tests/features/manage-project/manage-project.feature) for an example feature file.
 
 
-- A cucumber script implementing the steps defined in the Gherkin feature file, to test the scenarios in the Gherkin feature file. See the [manage-project step definition](svc/test/webapp/cucumber/features/manage-project/stepDefinitions.js) for an example cucumber step definition script.
+- A cucumber script implementing the steps defined in the Gherkin feature file, to test the scenarios in the Gherkin feature file. See the [manage-project step definition](svc/test/webapp/e2e_tests/features/manage-project/stepDefinitions.js) for an example cucumber step definition script.
  
 
-- Page Object script(s), encapsulating the user interface actions required by the cucumber scripts in order to implement the scenarios defined in the Gherkin feature file.  See the [manage-project page model](svc/test/webapp/cucumber/page-models/manage-project.page.js) for an example page model.
+- Page Object script(s), encapsulating the user interface actions required by the cucumber scripts in order to implement the scenarios defined in the Gherkin feature file.  See the [manage-project page model](svc/test/webapp/e2e_tests/page-models/manage-project.page.js) for an example page model.
 
 
 Scenarios that require data setup, should make use of the testsetup child project included in the seed. This is a Play application exposing a RESTful API for the execution of SQL scripts. To invoke a SQL script through the testsetup application, cucumber scripts should invoke the executeScript(scriptNumber) function of the following script. 
 
-		svc/test/webapp/cucumber/util/setup-service-caller.js
+		svc/test/webapp/e2e_tests/util/setup-service-caller.js
 
-See the call to setup.executeScript(1) in the  [manage-project step definition](svc/test/webapp/cucumber/features/manage-project/stepDefinitions.js) for an example.  
+See the call to setup.executeScript(1) in the  [manage-project step definition](svc/test/webapp/e2e_tests/features/manage-project/stepDefinitions.js) for an example.  
 
 The SQL scripts to set up test data should be placed in the following directory of the testsetup child project
 
@@ -265,7 +265,7 @@ Enter the following command
 
 	npm run protractor-test
 
-This will invoke the protractor-test "event" in the [package.json](./package.json) file, which runs the command "./node_modules/.bin/protractor svc/test/webapp/cucumber/conf.js"
+This will invoke the protractor-test "event" in the [package.json](./package.json) file, which runs the command "./node_modules/.bin/protractor svc/test/webapp/e2e_tests/conf.js"
 
 This will output the Gherkin style scenario description for each scenario run, and display which tests have passed or failed. 
 
