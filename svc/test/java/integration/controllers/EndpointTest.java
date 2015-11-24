@@ -6,7 +6,6 @@ import play.inject.guice.GuiceApplicationBuilder;
 
 import java.util.Map;
 
-import static play.test.Helpers.inMemoryDatabase;
 import static play.test.Helpers.running;
 
 /**
@@ -16,7 +15,7 @@ public abstract class EndpointTest
 {
     public void runEndpointTest(EndpointTestCase testCase, Map configuration)
     {
-        Application guiceApp = getApplication(inMemoryDatabase());
+        Application guiceApp = getApplication(configuration);
 
         running(guiceApp, testCase);
     }

@@ -36,6 +36,7 @@ Index
 
 - [Application End to End Testing](#ApplicationEndToEndTesting)
 - [Angular Client Unit Testing](#AngularClientUnitTesting)
+- [Play Integration Testing](#PlayIntegrationTesting)
 - [Play Unit Testing](#PlayUnitTesting)
 
 **[5. Running The Application](#RunningTheApplication)**
@@ -370,10 +371,29 @@ To run the karma tests open a command window at the project root and enter the f
 This will invoke the Play unit tests as well as the Angular client unit tests.
 
 
-<a name="PlayUnitTesting"></a>
-### 4.3 Play Unit Testing ###
+<a name="PlayIntegrationTesting"></a>
+### 4.3 Play Integration Testing ###
 
-The PAMM seed folder structure adheres to the Play application convention, so in order for unit tests in the Play application to be invoked as part of the "sbt test" task, simply follow the instructions as detailed on the [Play Framework Testing page](https://www.playframework.com/documentation/2.4.3/JavaTest). The [JSONHelperTest.java](svc/test/java/unit/util/json/play/JSONHelperTest.java) provides a simple example of a Junit test.
+Play provides a variety of [Helper utilities](https://www.playframework.com/documentation/2.4.3/JavaFunctionalTest) that facilitate integration testing of Play application features. 
+
+The PAMM seed uses these Play Helper utilities to test the endpoints exposed to the Angular client. The [ProjectsEndpointTest.java](svc/test/java/integration/controllers/resource/play/ProjectsEndpointTest.java) class provides an example of how to test an application endpoint. It's superclass [EndpointTest.java](svc/test/java/integration/controllers/EndpointTest.java) starts a "fake" Play application in which to execute the tests, with one [EndpointTestCase.java](svc/test/java/integration/controllers/EndpointTestCase.java) being invoked per test method in [ProjectsEndpointTest.java](svc/test/java/integration/controllers/resource/play/ProjectsEndpointTest.java).
+
+The integration tests are placed in the following folder
+
+	svc/test/java/integration/controllers/resource/play
+ 
+The integration tests in the Play application are currently included in the "sbt test" task, so are run along with with the Play application unit tests.
+
+
+<a name="PlayUnitTesting"></a>
+### 4.4 Play Unit Testing ###
+In order for unit tests in the Play application to be invoked as part of the "sbt test" task, simply follow the instructions as detailed on the [Play Framework Testing page](https://www.playframework.com/documentation/2.4.3/JavaTest). 
+
+The unit tests are placed in the following folder
+
+	svc/test/java/unit/
+
+The [JSONHelperTest.java](svc/test/java/unit/util/json/play/JSONHelperTest.java) provides a simple example of a Junit test.
 
 
 <a name="RunningTheApplication"></a>
