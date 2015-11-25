@@ -30,6 +30,10 @@ Open a command window at the PAMM seed root folder and enter the following comma
 
         npm install -g protractor
 
+Update the webdriver-manager which is a helper tool to get a Selenium Server running
+
+        webdriver-manager update
+
 Provided there are no issues with the proxy, the protractor and webdriver-manager globably packages
 will be installed globally.
 
