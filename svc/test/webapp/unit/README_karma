@@ -23,7 +23,7 @@ package.json file.
 
 To run the unit tests with karma, open command window at the PAMM seed root folder and enter the following command
 
-        npm run jasminetest
+        npm run jasmine-test
 
 The test script is defined in the package.json file and executes "./node_modules/.bin/karma start"
 

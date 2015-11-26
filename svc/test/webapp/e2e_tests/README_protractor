@@ -22,26 +22,18 @@ Provided there are no issues with your proxy, this should install all the requir
 package.json file.
 
 
---------------------3 Install protractor package-------------
+NOTE: When installing protractor some errors are displayed, but do not seem to affect the installation.
 
-The following instructions will install the protractor and webdriver-manager packages globally.
+
+--------------------3 Update webdriver manager-------------
+
+The following instructions will update the webdriver-manager package.
 
 Open a command window at the PAMM seed root folder and enter the following command.
 
-        npm install -g protractor
+        npm run webdriver-update
 
-Update the webdriver-manager which is a helper tool to get a Selenium Server running
-
-        webdriver-manager update
-
-Provided there are no issues with the proxy, the protractor and webdriver-manager globably packages
-will be installed globally.
-
-NOTE: When installing protractor some errors are displayed, but do not seem to affect the installation.
-
-To test that protractor has installed successfully run the following command
-
-        protractor --version
+Provided there are no issues with the proxy, the webdriver-manager globably should update successfully.
 
 
 ********************RUNNING PROTRACTOR TESTS*******************
@@ -66,11 +58,11 @@ The webdriver-manager is a helper tool to easily get an instance of a Selenium S
 
 Use it to download the necessary binaries with the following command:
 
-        webdriver-manager update
+        npm run webdriver-update
 
 Start a Selenium server instance with the following command
 
-        webdriver-manager start
+        npm run selenium-start
 
 You can see information about the server status by accessing
 
@@ -114,7 +106,7 @@ The svc application should now be running on port 9000.
 
 From the PAMM seed root directory run the following command
 
-        protractor svc\test\webapp\e2e_tests\conf.js
+        npm run e2e_cucumber_test
 
 This will now invoke the tests configured in the cucumberOpts "require" property of the conf.js file 
 
