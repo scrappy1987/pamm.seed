@@ -11,6 +11,13 @@ PAMM-SEED is a template for building Web Applications using the PAMM stack:
 
 -   [MongoDb](https://www.mongodb.org/community) for document based non-relational data
 
+
+Pre-requisites
+-----
+
+Prior to running the PAMM seed the Play framework should be installed on your machine. See the [Play website](https://www.playframework.com/download) for installation instructions.
+
+
 Index
 -----
 
@@ -402,19 +409,19 @@ The [JSONHelperTest.java](svc/test/java/unit/util/json/play/JSONHelperTest.java)
 
 Open a command window at the PAMM seed root folder and enter the following command
 
-	buildscripts\batch\startDatabase.bat
+	activator svc/startPAMM
 
-This will start the H2 database server on port 9092.
+This will start the H2 database server on port 9092, and the Play application on port 9000.
 
-The start the application by running the following command from the PAMM seed root folder
-
-    activator svc/run
-
-Once the "Server started" message is displayed in the command window, access the following URL in your browser
+Enter the following URL in a browser
 
     http://localhost:9000
 
 The PAMM login page should be presented. The seed has no authentication configured for this initial draft version, so by entering any username and password, the PAMM dashboard should be displayed. The angular client is integrated with the Play backend and any actions on the Angular client will be routed to the Play backend.
+
+To shutdown the database and Play application open a command window at the project root folder and enter the following command
+
+	activator svc/stopPAMM
 
 
 
