@@ -10,9 +10,13 @@ object E2ETestTask extends ProcessRunner {
 
   def endToEndTestTask = {
     if (!checkAsyncProcessesRunning(E2ETestTaskConstants.PORTS, E2ETestTaskConstants.LOGICAL_OR, false)) {
-      startAsyncProcesses(E2ETestTaskConstants.ASYNC_PROCESS_SCRIPTS)
-      if (readyForTest(E2ETestTaskConstants.PORTS)) {
-        startSyncProcessNoArgs(E2ETestTaskConstants.PROTRACTOR_TEST_SCRIPT, E2ETestTaskConstants.PROTRACTOR_TEST_SCRIPT + E2ETestTaskConstants.OUTPUT_LOG_SUFFIX, true)
+      try {
+        startAsyncProcesses(E2ETestTaskConstants.ASYNC_PROCESS_SCRIPTS)
+        if (readyForTest(E2ETestTaskConstants.PORTS)) {
+          startSyncProcessNoArgs(E2ETestTaskConstants.PROTRACTOR_TEST_SCRIPT, E2ETestTaskConstants.PROTRACTOR_TEST_SCRIPT + E2ETestTaskConstants.OUTPUT_LOG_SUFFIX, true)
+        }
+      }
+      finally {
         stopAsyncProcesses(E2ETestTaskConstants.PORTS)
       }
     }
@@ -33,7 +37,7 @@ object E2ETestTask extends ProcessRunner {
   }
 
   def printReadyForTestStatus(readyForTest: Boolean) = {
-    if (readyForTest) System.out.println(E2ETestTaskConstants.ALL_PROCESSES_STARTED) else System.out.println(E2ETestTaskConstants.PROCESSES_NOT_STARTED)
+    if (readyForTest) System.out.println(E2ETestTaskConstants.ALL_PROCESSES_STARTED) else error(E2ETestTaskConstants.PROCESSES_NOT_STARTED)
   }
 
   def getResultsFolder() = {
