@@ -1,8 +1,8 @@
-package models.services.project;
+package domain.services.project;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.services.Service;
-import models.services.UnavailableServiceOperation;
+import domain.infrastructure.Service;
+import domain.infrastructure.UnavailableServiceOperation;
 import util.json.play.JSONHelper;
 
 import javax.inject.Inject;

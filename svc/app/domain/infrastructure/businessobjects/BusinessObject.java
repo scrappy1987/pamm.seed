@@ -1,4 +1,4 @@
-package models.services.businessobjects;
+package domain.infrastructure.businessobjects;
 
 public class BusinessObject
 {

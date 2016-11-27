@@ -7,23 +7,19 @@
 
 # DYNAMIC CONTENT
 
-GET         /project        controllers.resource.play.ProjectsEndpoint.list()
-GET         /project/:id    controllers.resource.play.ProjectsEndpoint.find(id: Long)
-POST        /project        controllers.resource.play.ProjectsEndpoint.create()
-PUT         /project        controllers.resource.play.ProjectsEndpoint.update()
-DELETE      /project/:id    controllers.resource.play.ProjectsEndpoint.delete(id: Long)
-
-GET         /sse-connection/:id    controllers.resource.play.SSEEndpoint.createSSEConnection(id: String)
-POST        /sse-request           controllers.resource.play.SSEEndpoint.createSSEExampleRequest()
-
+GET         /project                   endpoint.ProjectsEndpoint.list()
+GET         /project/:id               endpoint.ProjectsEndpoint.find(id: Long)
+POST        /project                   endpoint.ProjectsEndpoint.create()
+PUT         /project                   endpoint.ProjectsEndpoint.update()
+DELETE      /project/:id               endpoint.ProjectsEndpoint.delete(id: Long)
 
 #STATIC CONTENT
 
 # Home page
-GET         /               controllers.Assets.at(path="/public/webapp", file="index.html")
+GET         /                          controllers.Assets.at(path="/public/webapp", file="index.html")
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /*file          controllers.Assets.versioned(path="/public/webapp", file: Asset)
+GET         /*file                     controllers.Assets.versioned(path="/public/webapp", file: Asset)
 
 
 

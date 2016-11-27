@@ -1,4 +1,4 @@
-Feature: Loginpage
+§Feature: Loginpage
   As a user
   I want my credentials to be recognised
   So I am authorized to manage projects

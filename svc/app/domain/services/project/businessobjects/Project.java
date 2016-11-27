@@ -1,6 +1,6 @@
-package models.services.project.businessobjects;
+package domain.services.project.businessobjects;
 
-import models.services.businessobjects.BusinessObject;
+import domain.infrastructure.businessobjects.BusinessObject;
 
 public class Project extends BusinessObject
 {

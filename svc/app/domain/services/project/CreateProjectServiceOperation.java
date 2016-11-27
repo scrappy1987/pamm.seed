@@ -1,29 +1,27 @@
-package models.services.project;
+package domain.services.project;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.services.ServiceOperation;
-import models.services.project.businessobjects.Project;
+import domain.infrastructure.ServiceOperation;
+import domain.services.project.businessobjects.Project;
 import play.Logger;
 
 import javax.inject.Inject;
 
-public class UpdateProjectServiceOperation extends ServiceOperation
+public class CreateProjectServiceOperation extends ServiceOperation
 {
-    private static final Logger.ALogger logger = Logger.of(UpdateProjectServiceOperation.class);
+    private static final Logger.ALogger logger = Logger.of(CreateProjectServiceOperation.class);
 
     private ProjectRepository repository;
 
     @Inject
-    public UpdateProjectServiceOperation(ProjectRepository repository)
+    public CreateProjectServiceOperation(ProjectRepository repository)
     {
         this.repository = repository;
     }
 
     @Override protected JsonNode doExecute(JsonNode jsonRequest)
     {
-        Long id = Long.parseLong(jsonRequest.findPath("id").textValue());
-
-        Project project = repository.get(id);
+        Project project = new Project();
 
         project.setStatus(jsonRequest.findPath("status").textValue());
 

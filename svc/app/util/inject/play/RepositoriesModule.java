@@ -1,7 +1,7 @@
 package util.inject.play;
 
-import models.repository.jpa.ProjectJpaRepository;
-import models.services.project.ProjectRepository;
+import persistence.infrastrcture.ProjectJpaRepository;
+import domain.services.project.ProjectRepository;
 import play.Logger;
 import play.api.Configuration;
 import play.api.Environment;

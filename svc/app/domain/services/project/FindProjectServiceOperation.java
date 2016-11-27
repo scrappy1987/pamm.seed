@@ -1,8 +1,8 @@
-package models.services.project;
+package domain.services.project;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.services.ServiceOperation;
-import models.services.project.businessobjects.Project;
+import domain.infrastructure.ServiceOperation;
+import domain.services.project.businessobjects.Project;
 import play.Logger;
 import util.json.play.JSONHelper;
 

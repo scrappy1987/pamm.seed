@@ -1,4 +1,4 @@
-package models.services;
+package domain.infrastructure;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import util.json.play.JSONHelper;

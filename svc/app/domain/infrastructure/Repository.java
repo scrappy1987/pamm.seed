@@ -1,6 +1,6 @@
-package models.services;
+package domain.infrastructure;
 
-import models.services.businessobjects.BusinessObject;
+import domain.infrastructure.businessobjects.BusinessObject;
 
 import java.util.List;
 
